@@ -23,9 +23,9 @@ cpp_neovim_plugins:
   - "    'nvim-treesitter/nvim-treesitter'"
   - "  }"
   - "}"
-lsp_providers:
+lsp_providers_cpp:
   - clangd
-lsp_providers_setup:
+lsp_providers_cpp_setup:
   - "require(\"clangd_extensions\").setup()"
   - "local configs = require('lspconfig.configs')"
   - "local nvim_lsp = require('lspconfig')"
@@ -56,12 +56,12 @@ nvim_completion_config:
 - "        cmp.config.compare.order,"
 - "    },"
 - "},"
-treesitter_parsers:
+treesitter_parsers_cpp:
   - cpp
   - c
   - llvm
   - cmake
-treesitter_extra_config:
+treesitter_extra_config_cpp:
   - "nt_cpp_tools = {"
   - "    enable = true,"
   - "    preview = {"
@@ -71,7 +71,6 @@ treesitter_extra_config:
   - "    header_extension = 'h', -- optional"
   - "    source_extension = 'cxx', -- optional"
   - "},"
-language_neovim_plugins: "{{ cpp_neovim_plugins }}"
 cpp_ale_plugin_settings:
   - "vim.cmd([[ let g:ale_c_parse_compile_commands=1 ]])"
   - "vim.cmd([["

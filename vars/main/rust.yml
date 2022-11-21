@@ -1,1 +1,14 @@
 ---
+lsp_providers_rust:
+  - rust_analyzer
+lsp_providers_rust_setup:
+  - "require(\"rust-tools\").setup()"
+treesitter_parsers_rust:
+  - rust
+rust_neovim_plugins:
+  - "use { 'simrat39/rust-tools.nvim',"
+  - "  requires = {"
+  - "    'nvim-lua/plenary.nvim',"
+  - "    'mfussenegger/nvim-dap',"
+  - "  }"
+  - "}"
