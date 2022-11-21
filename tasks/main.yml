@@ -98,3 +98,21 @@
   import_tasks: tasks/install_joplin.yml
   tags:
     - joplin
+
+- name: Boost | Install CppTools | task
+  import_tasks: install_cpp_tools.yml
+  tags:
+    - cpp
+  when: "'cpp' in install_languages"
+
+- name: VSCode CppTools | Install VSCode CppTools | task
+  import_tasks: install_vscode_cpptools.yml
+  tags:
+    - cpp
+  when: "'cpp' in install_languages"
+
+#- name: GCCDiag | Install GCCDiag | task
+#  import_tasks: install_gccdiag.yml
+#  tags:
+#    - cpp
+#  when: "'cpp' in install_languages"

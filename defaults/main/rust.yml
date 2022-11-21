@@ -1,0 +1,8 @@
+---
+rust_tools_nix:
+  - rustup
+  - cargo
+  - cargo-edit
+  - rust-analyzer
+  - rustfmt
+  - clippy
