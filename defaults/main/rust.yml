@@ -1,6 +1,7 @@
 ---
 rust_tools_nix:
-  - rustup
+  - rustc
+  - cargo
   - cargo-edit
   - rust-analyzer
   - rustfmt
