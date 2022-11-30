@@ -1,0 +1,24 @@
+---
+- name: Setup Neovim Config Directory
+  file:
+    path: "{{ nvim_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Neovim | Copies Neovim Lua Config | template
+  template:
+    src: nvim-cosynvim/init.lua.j2
+    dest: "{{ nvim_init_lua }}"
+
+- name: Setup Neovim Lua Config Directory
+  file:
+    path: "{{ nvim_lua_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Neovim | Copies Neovim Plugin Config | template
+  template:
+    src: '{{ item.src }}'
+    dest: "{{ nvim_lua_config_dir }}/{{ item.path  | regex_replace('\\.j2$', '') }}"
+  with_filetree: '../templates/nvim-cosynvim/lua'
+  when: item.state == 'file'
