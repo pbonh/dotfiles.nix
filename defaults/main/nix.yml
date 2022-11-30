@@ -8,3 +8,5 @@ nix_buildenv_name: dev-pack
 nix_config_dir: "{{ dotfiles_user_home }}/.config/nixpkgs"
 lang_tools_nix: []
 lang_tools_nix_file: "{{ lang_tools_nix | join('\n') }}"
+rg_exe: "{{ nix_bin }}/rg"
+nvim_python_exe: "{{ nix_bin }}/nvim-python3"
