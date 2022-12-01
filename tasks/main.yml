@@ -49,6 +49,15 @@
   tags:
     - neovim
 
+- name: Install Neovim Config(Cosynvim)
+  vars:
+    nvim_config_dir: "{{ cosynvim_config_dir }}"
+    nvim_share_dir: "{{ cosynvim_share_dir }}"
+    nvim_cache_dir: "{{ cosynvim_cache_dir }}"
+  import_tasks: tasks/install_neovim_cosynvim.yml
+  tags:
+    - neovim
+
 - name: Install Helix Config
   import_tasks: tasks/install_helix.yml
   tags:

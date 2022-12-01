@@ -1,7 +1,19 @@
 ---
-- name: Setup Neovim Config Directory
+- name: Neovim | Setup Neovim Config Directory | file
   file:
     path: "{{ nvim_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Neovim | Setup Neovim Share(Data) Directory | file
+  file:
+    path: "{{ nvim_share_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Neovim | Setup Neovim Cache Directory | file
+  file:
+    path: "{{ nvim_cache_dir }}"
     state: directory
     mode: '0755'
 
