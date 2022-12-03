@@ -1,4 +1,5 @@
 ---
+zellij_exe: "{{ nix_bin }}/zellij"
 zellij_shell: "{{ nvim_shell }}"
 zellij_config_dir: "{{ xdg_config_dir }}/zellij"
 zellij_config_file: "{{ zellij_config_dir }}/config.yaml"
