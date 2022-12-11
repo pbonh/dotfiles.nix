@@ -8,7 +8,6 @@ extra_nvim_language_mappings_cpp:
   - "nnoremap('<leader>cr', '<cmd>CMake run<CR>', 'silent', { ft = {% raw %}{{% endraw %} {{ cpp_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'C/C++ CMake: Run Target')"
   - "nnoremap('<leader>cd', '<cmd>CMake debug<CR>', 'silent', { ft = {% raw %}{{% endraw %} {{ cpp_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'C/C++ CMake: Debug Target')"
   - "nnoremap('<leader>cl', '<cmd>CMake clean<CR>', 'silent', { ft = {% raw %}{{% endraw %} {{ cpp_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'C/C++ CMake: Clean')"
-extra_nvim_language_mappings: "{{ extra_nvim_language_mappings_cpp }}"
 cpp_neovim_plugins:
   - "use 'p00f/clangd_extensions.nvim'"
   - "use { 'Shatur/neovim-cmake',"
@@ -111,8 +110,6 @@ cpp_dap_plugin_settings:
   - "    {{ lldb_vscode_runner | indent(width=2) }}"
   - "  }"
   - "  dap.configurations.c = dap.configurations.cpp"
-  - "  dap.configurations.rust = dap.configurations.cpp"
-dap_plugin_settings: "{{ cpp_dap_plugin_settings }}"
 cpp_extra_lua_plugin_settings:
   - "local Path = require('plenary.path')"
   - "require('cmake').setup({"
@@ -147,7 +144,6 @@ cpp_extra_lua_plugin_settings:
   - "  },"
   - "  dap_open_command = require('dapui').open,"
   - "})"
-extra_lua_plugin_settings: "{{ cpp_extra_lua_plugin_settings }}"
 ccls_coc_config:
   ccls:
     command: "{{ nix_bin }}/ccls"

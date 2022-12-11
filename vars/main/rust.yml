@@ -1,10 +1,31 @@
 ---
 lsp_providers_rust:
   - rust_analyzer
-lsp_providers_rust_setup:
-  - "require(\"rust-tools\").setup()"
-treesitter_parsers_rust:
-  - rust
+lsp_providers_rust_setup: []
+rust_extra_lua_plugin_settings: []
+rust_dap_plugin_settings:
+  - "dap.configurations.rust = {"
+  - "  {"
+  - "    name = \"Rust Debug\","
+  - "    type = \"lldb\","
+  - "    request = \"launch\","
+  - "    program = function()"
+  - "      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')"
+  - "    end,"
+  - "    cwd = '${workspaceFolder}',"
+  - "    stopOnEntry = true,"
+  - "  },"
+  - "}"
+  - "local opts = {"
+  - "  dap = {"
+  - "    adapter = {"
+  - "      type = \"executable\","
+  - "      command = \"{{ lldb_vscode_bin }}\","
+  - "      name = \"rt_lldb\","
+  - "    },"
+  - "  },"
+  - "}"
+  - "require('rust-tools').setup(opts)"
 rust_neovim_plugins:
   - "use { 'simrat39/rust-tools.nvim',"
   - "  requires = {"
@@ -12,3 +33,7 @@ rust_neovim_plugins:
   - "    'mfussenegger/nvim-dap',"
   - "  }"
   - "}"
+extra_nvim_language_mappings_rust:
+  - "m.nname('<leader>c', 'Rust-Tools')"
+  - "nnoremap('<leader>ch', '<cmd>lua require(\"rust-tools\").hover_actions.hover_actions()<CR>', 'silent', { buffer = bufnr }, { ft = {% raw %}{{% endraw %} {{ rust_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'Rust-Tools: Hover Actions')"
+  - "nnoremap('<leader>ca', '<cmd>lua require(\"rust-tools\").code_action_group.code_action_group()<CR>', 'silent', { buffer = bufnr }, { ft = {% raw %}{{% endraw %} {{ rust_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'Rust-Tools: Code Actions')"
