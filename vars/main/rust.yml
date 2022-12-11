@@ -37,3 +37,4 @@ extra_nvim_language_mappings_rust:
   - "m.nname('<leader>c', 'Rust-Tools')"
   - "nnoremap('<leader>ch', '<cmd>lua require(\"rust-tools\").hover_actions.hover_actions()<CR>', 'silent', { buffer = bufnr }, { ft = {% raw %}{{% endraw %} {{ rust_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'Rust-Tools: Hover Actions')"
   - "nnoremap('<leader>ca', '<cmd>lua require(\"rust-tools\").code_action_group.code_action_group()<CR>', 'silent', { buffer = bufnr }, { ft = {% raw %}{{% endraw %} {{ rust_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'Rust-Tools: Code Actions')"
+  - "nnoremap('<leader>cd', '<cmd>RustDebuggables<CR>', 'silent', { ft = {% raw %}{{% endraw %} {{ rust_file_extensions_comma_list }} {% raw %}}{% endraw %} }, 'Rust-Tools: Debug')"
