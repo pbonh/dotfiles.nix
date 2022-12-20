@@ -8,6 +8,8 @@ nvim_xdg_profile_dir:
 nvim_xdg_profiles:
   cosynvim:
     name: cosynvim
+  basicide:
+    name: basic-ide
 # nix:
 #   name: nix
 # musl:
