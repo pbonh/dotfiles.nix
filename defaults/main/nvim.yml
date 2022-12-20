@@ -1,5 +1,17 @@
 ---
 nvim_exe: "{{ nix_bin }}/nvim"
+nvim_profile_dir_name: "nvim-profiles"
+nvim_xdg_profile_dir: 
+  config: "{{ xdg_config_dir }}/{{ nvim_profile_dir_name }}"
+  share: "{{ xdg_share_dir }}/{{ nvim_profile_dir_name }}"
+  cache: "{{ xdg_cache_dir }}/{{ nvim_profile_dir_name }}"
+nvim_xdg_profiles:
+  cosynvim:
+    name: cosynvim
+# nix:
+#   name: nix
+# musl:
+#   name: musl
 nvim_xdg_config_dir: "{{ xdg_config_dir }}"
 nvim_xdg_data_dir: "{{ xdg_share_dir }}"
 nvim_xdg_cache_dir: "{{ xdg_cache_dir }}"
