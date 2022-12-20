@@ -15,9 +15,31 @@
 
 - name: Neovim | Install Neovim Profile Configs | file
   vars:
-    nvim_profile_name: "{{ item.value.name }}"
-    nvim_config_dir: "{{ nvim_xdg_profile_dir['config'] }}/{{ item.value.name }}"
-    nvim_share_dir: "{{ nvim_xdg_profile_dir['share'] }}/{{ item.value.name }}"
-    nvim_cache_dir: "{{ nvim_xdg_profile_dir['cache'] }}/{{ item.value.name }}"
-  import_tasks: tasks/install_neovim_profiles.yml
+    nvim_profile_name: "{{ profile_item.value.name }}"
+    nvim_config_dir: "{{ nvim_xdg_profile_dir['config'] }}/{{ profile_item.value.name }}"
+    nvim_share_dir: "{{ nvim_xdg_profile_dir['share'] }}/{{ profile_item.value.name }}"
+    nvim_cache_dir: "{{ nvim_xdg_profile_dir['cache'] }}/{{ profile_item.value.name }}"
+  include_tasks: tasks/install_neovim_profiles.yml
   loop: "{{ nvim_xdg_profiles | dict2items }}"
+  loop_control:
+    loop_var: profile_item
+
+- name: Neovim | Copies Scripts | template
+  vars:
+    nvim_profile_name: "{{ profile_item.value.name }}"
+    nvim_config_dir: "{{ nvim_xdg_profile_dir['config'] }}/{{ profile_item.value.name }}"
+    nvim_share_dir: "{{ nvim_xdg_profile_dir['share'] }}/{{ profile_item.value.name }}"
+    nvim_cache_dir: "{{ nvim_xdg_profile_dir['cache'] }}/{{ profile_item.value.name }}"
+  template:
+    src: "nvim/nvim-profile.j2"
+    dest: "{{ bin_directory }}/nvim-{{ profile_item.value.name }}"
+  loop: "{{ nvim_xdg_profiles | dict2items }}"
+  loop_control:
+    loop_var: profile_item
+
+- name: Scripts | Change Script Permissions | file
+  file:
+    path: "{{ bin_directory }}"
+    mode: +x
+    state: directory
+    recurse: yes
