@@ -2,15 +2,15 @@ local helper = {}
 local home = vim.env.HOME
 
 function helper.get_config_path()
-  return '{{ cosynvim_config_dir }}'
+  return '{{ nvim_config_dir }}'
 end
 
 function helper.get_data_path()
-  return '{{ cosynvim_share_dir }}'
+  return '{{ nvim_share_dir }}'
 end
 
 function helper.get_cache_path()
-  return '{{ cosynvim_cache_dir }}'
+  return '{{ nvim_cache_dir }}'
 end
 
 return helper
