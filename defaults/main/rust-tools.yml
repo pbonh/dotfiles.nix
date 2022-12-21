@@ -4,6 +4,17 @@ rustup_script_path: "{{ ansible_env.HOME }}/rustup-init.sh"
 rustup_toolchain: "stable"
 cargo_path: "{{ ansible_env.HOME }}/.cargo/bin"
 cargo_bin: "{{ cargo_path }}/cargo"
+cargo_binstall_exe: "{{ cargo_path }}/cargo-binstall"
 cargo_packages:
-  - { name: log-analyzer-pro, path: lap }
+  - { name: cargo-binstall, path: cargo-binstall }
+cargo_binstall_packages:
+  - { name: bat, path: bat }
+  - { name: bottom, path: btm }
+  - { name: broot, path: broot }
+  - { name: exa, path: exa }
+  - { name: fd-find, path: fd }
+  - { name: joshuto, path: joshuto }
+  - { name: ripgrep, path: rg }
+  - { name: xplr, path: xplr }
+  - { name: zellij, path: zellij }
 rustc_env_variables: ""
