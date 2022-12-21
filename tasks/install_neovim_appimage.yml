@@ -1,0 +1,6 @@
+---
+- name: Neovim | Download Neovim Appimage | get_url
+  get_url:
+    url: "{{ nvim_appimage_url }}"
+    dest: "{{ nvim_appimage_exe }}"
+    mode: 0755

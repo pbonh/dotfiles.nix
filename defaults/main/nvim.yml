@@ -1,4 +1,7 @@
 ---
+nvim_appimage_version: v0.8.1
+nvim_appimage_url: "https://github.com/neovim/neovim/releases/download/{{ nvim_appimage_version }}/nvim.appimage"
+nvim_appimage_exe: "{{ bin_directory }}/nvim.appimage"
 nvim_exe: "{{ nix_bin }}/nvim"
 nvim_profile_dir_name: "nvim-profiles"
 nvim_xdg_profile_dir: 
