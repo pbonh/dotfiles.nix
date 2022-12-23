@@ -4,6 +4,12 @@ nvim_appimage_url: "https://github.com/neovim/neovim/releases/download/{{ nvim_a
 nvim_appimage_exe: "{{ bin_directory }}/nvim.appimage"
 nvim_exe: "{{ nix_bin }}/nvim"
 nvim_profile_dir_name: "nvim-profiles"
+nvim_path_settings:
+  - "vim.opt.runtimepath:remove(vim.fn.expand('{{ default_nvim_config_dir }}'))"
+  - "vim.opt.packpath:remove(vim.fn.expand('{{ default_nvim_share_dir }}/site'))"
+  - "vim.opt.runtimepath:append(vim.fn.expand('{{ nvim_config_dir }}'))"
+  - "vim.opt.packpath:append(vim.fn.expand('{{ nvim_config_dir }}'))"
+  - "vim.opt.packpath:append(vim.fn.expand('{{ nvim_share_dir }}/site'))"
 nvim_xdg_profile_dir: 
   config: "{{ xdg_config_dir }}/{{ nvim_profile_dir_name }}"
   share: "{{ xdg_share_dir }}/{{ nvim_profile_dir_name }}"
@@ -13,6 +19,8 @@ nvim_xdg_profiles:
     name: cosynvim
   basicide:
     name: basic-ide
+  kickstart:
+    name: kickstart
 # nix:
 #   name: nix
 # musl:
@@ -29,6 +37,7 @@ default_nvim_cache_dir: "{{ nvim_xdg_cache_dir }}/nvim"
 cosynvim_config_dir: "{{ nvim_xdg_config_dir }}/nvim-cosynvim"
 cosynvim_share_dir: "{{ nvim_xdg_data_dir }}/nvim-cosynvim"
 cosynvim_cache_dir: "{{ nvim_xdg_cache_dir }}/nvim-cosynvim"
+packer_url: "https://github.com/wbthomason/packer.nvim" 
 nvim_packer_reldir: "site/pack/packer/start/packer.nvim"
 nvim_packer_dir: "{{ nvim_share_dir }}/{{ nvim_packer_reldir }}"
 nvim_vim_plug_dir: "{{ nvim_share_dir }}/site/autoload"
