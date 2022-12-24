@@ -1,5 +1,7 @@
--- Install packer
+-- Neovim Path Settings
 {{ nvim_path_settings | join('\n') }}
+
+-- Install packer
 local install_path = '{{ nvim_packer_dir }}'
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
