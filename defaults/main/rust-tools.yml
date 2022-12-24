@@ -6,16 +6,44 @@ cargo_path: "{{ ansible_env.HOME }}/.cargo/bin"
 cargo_bin: "{{ cargo_path }}/cargo"
 cargo_binstall_exe: "{{ cargo_path }}/cargo-binstall"
 cargo_packages:
-  - { name: cargo-binstall, path: cargo-binstall }
+  binstall:
+    name: cargo-binstall
+    path: "{{ cargo_path }}/cargo-binstall"
 cargo_binstall_packages:
-  - { name: bat, path: bat }
-  - { name: bottom, path: btm }
-  - { name: broot, path: broot }
-  - { name: exa, path: exa }
-  - { name: fd-find, path: fd }
-  - { name: joshuto, path: joshuto }
-  - { name: ripgrep, path: rg }
-  - { name: xplr, path: xplr }
-  - { name: zellij, path: zellij }
+  bat:
+    name: bat
+    path: "{{ cargo_path }}/bat"
+  broot:
+    name: broot
+    path: "{{ cargo_path }}/broot"
+  exa:
+    name: exa
+    path: "{{ cargo_path }}/exa"
+  fd-find:
+    name: fd-find
+    path: "{{ cargo_path }}/fd"
+  joshuto:
+    name: joshuto
+    path: "{{ cargo_path }}/joshuto"
+  nu:
+    name: nu
+    path: "{{ cargo_path }}/nu"
+  ripgrep:
+    name: ripgrep
+    path: "{{ cargo_path }}/rg"
+  xplr:
+    name: xplr
+    path: "{{ cargo_path }}/xplr"
+  zellij:
+    name: zellij
+    path: "{{ cargo_path }}/zellij"
 rustc_env_variables: ""
-rg_exe: "{{ cargo_path }}/rg"
+bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
+broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
+exa_exe: "{{ cargo_binstall_packages['exa']['path'] }}"
+fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
+joshuto_exe: "{{ cargo_binstall_packages['joshuto']['path'] }}"
+nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
+rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
+xplr_exe: "{{ cargo_binstall_packages['xplr']['path'] }}"
+zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"

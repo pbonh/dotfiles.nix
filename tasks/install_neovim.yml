@@ -6,13 +6,6 @@
     mode: '0755'
   loop: "{{ nvim_xdg_profile_dir | dict2items }}"
 
-- name: Neovim | Setup Neovim Profiles | file
-  file:
-    path: "{{ item.key }}/{{ item.value.name }}"
-    state: directory
-    mode: '0755'
-  loop: "{{ nvim_xdg_profiles | dict2items }}"
-
 - name: Neovim | Install Neovim Profile Configs | file
   vars:
     nvim_profile_name: "{{ profile_item.value.name }}"
