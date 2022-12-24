@@ -18,3 +18,4 @@ cargo_binstall_packages:
   - { name: xplr, path: xplr }
   - { name: zellij, path: zellij }
 rustc_env_variables: ""
+rg_exe: "{{ cargo_path }}/rg"

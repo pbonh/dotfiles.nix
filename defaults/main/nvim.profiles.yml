@@ -1,0 +1,92 @@
+---
+nvim_profile_dir_name: "nvim-profiles"
+nvim_xdg_profile_dir: 
+  config: "{{ xdg_config_dir }}/{{ nvim_profile_dir_name }}"
+  share: "{{ xdg_share_dir }}/{{ nvim_profile_dir_name }}"
+  cache: "{{ xdg_cache_dir }}/{{ nvim_profile_dir_name }}"
+nvim_default_packer_config:
+  packer_info:
+nvim_default_editor_options:
+  - "vim.opt.termguicolors = true"
+  - "vim.opt.hidden = true"
+  - "vim.opt.magic = true"
+  - "vim.opt.virtualedit = 'block'"
+  - "vim.opt.clipboard = 'unnamedplus'"
+  - "vim.opt.wildignorecase = true"
+  - "vim.opt.swapfile = false"
+  - "vim.opt.directory = '{{ nvim_cache_dir }}' .. 'swap/'"
+  - "vim.opt.undodir = '{{ nvim_cache_dir }}' .. 'undo/'"
+  - "vim.opt.backupdir = '{{ nvim_cache_dir }}' .. 'backup/'"
+  - "vim.opt.viewdir = '{{ nvim_cache_dir }}' .. 'view/'"
+  - "vim.opt.spellfile = '{{ nvim_cache_dir }}' .. 'spell/en.uft-8.add'"
+  - "vim.opt.history = 2000"
+  - "vim.opt.timeout = true"
+  - "vim.opt.ttimeout = true"
+  - "vim.opt.timeoutlen = 500"
+  - "vim.opt.ttimeoutlen = 10"
+  - "vim.opt.updatetime = 100"
+  - "vim.opt.redrawtime = 1500"
+  - "vim.opt.ignorecase = true"
+  - "vim.opt.smartcase = true"
+  - "vim.opt.infercase = true"
+  - "vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'"
+  - "vim.opt.grepprg = '{{ rg_exe }} --vimgrep --no-heading --smart-case'"
+  - "vim.opt.completeopt = 'menu,menuone,noselect'"
+  - "vim.opt.showmode = false"
+  - "vim.opt.shortmess = 'aoOTIcF'"
+  - "vim.opt.scrolloff = 2"
+  - "vim.opt.sidescrolloff = 5"
+  - "vim.opt.ruler = false"
+  - "vim.opt.showtabline = 0"
+  - "vim.opt.winwidth = 30"
+  - "vim.opt.pumheight = 15"
+  - "vim.opt.showcmd = false"
+  - "vim.opt.cmdheight = 0"
+  - "vim.opt.laststatus = 3"
+  - "vim.opt.list = true"
+  - "vim.opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'"
+  - "vim.opt.pumblend = 10"
+  - "vim.opt.winblend = 10"
+  - "vim.opt.undofile = true"
+  - "vim.opt.smarttab = true"
+  - "vim.opt.expandtab = true"
+  - "vim.opt.autoindent = true"
+  - "vim.opt.tabstop = 2"
+  - "vim.opt.shiftwidth = 2"
+  - "vim.opt.linebreak = true"
+  - "vim.opt.whichwrap = 'h,l,<,>,[,],~'"
+  - "vim.opt.breakindentopt = 'shift:2,min:20'"
+  - "vim.opt.showbreak = '↳  '"
+  - "vim.opt.foldlevelstart = 99"
+  - "vim.opt.foldmethod = 'marker'"
+  - "vim.opt.number = true"
+  - "vim.opt.signcolumn = 'yes'"
+  - "vim.opt.spelloptions = 'camel'"
+  - "vim.opt.textwidth = 100"
+  - "vim.opt.colorcolumn = '100'"
+  - "vim.g.python3_host_prog = '{{ nvim_python_exe }}'"
+  - "-- vim.opt.conceallevel = 2"
+  - "-- vim.opt.concealcursor = 'niv'"
+nvim_default_editor_options_file: "{{ nvim_default_editor_options | join('\n') }}"
+nvim_default_keymap_options:
+  - "vim.g.mapleader = ' '"
+  - "vim.g.maplocalleader = ' '"
+  - "vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })"
+nvim_default_keymap_options_file: "{{ nvim_default_keymap_options | join('\n') }}"
+nvim_default_ui_options:
+  - "vim.opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'"
+nvim_default_ui_options_file: "{{ nvim_default_ui_options | join('\n') }}"
+nvim_packer_example:
+  plugin_name:
+    use: "path/to/plugin"
+nvim_default_plugins: []
+nvim_default_plugins_file: "{{ nvim_default_plugins | join('\n') }}"
+nvim_xdg_profiles:
+  cosynvim:
+    name: cosynvim
+  basicide:
+    name: basic-ide
+  kickstart:
+    name: kickstart
+  musl:
+    name: musl

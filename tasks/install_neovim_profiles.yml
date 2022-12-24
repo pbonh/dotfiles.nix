@@ -33,6 +33,6 @@
 
 - name: Neovim | Download Packer | git
   git:
-    repo: "https://github.com/wbthomason/packer.nvim"
+    repo: "{{ packer_url }}"
     dest: "{{ nvim_share_dir }}/{{ nvim_packer_reldir }}"
     depth: 1

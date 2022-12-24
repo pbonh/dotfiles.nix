@@ -1,0 +1,37 @@
+-- Neovim Path Settings
+{{ nvim_path_settings | join('\n') }}
+
+-- Packer Initialization
+local packer = require('packer')
+
+-- Packer Settings
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+  git = {
+    cmd = '{{ git_exe }}',
+    clone_timeout = 80,
+  },
+  autoremove = true,
+})
+
+-- Packer Plugins
+packer.startup(function(use)
+  -- Package manager
+  use 'wbthomason/packer.nvim'
+
+  -- Neovim Plugins
+  {{ nvim_default_plugins_file or "-- No Plugins to Install" }}
+end)
+
+-- Neovim Editor Settings
+{{ nvim_default_editor_options_file or "-- No Editor Options Set" }}
+
+-- Neovim Keymap Settings
+{{ nvim_default_keymap_options_file or "-- No Keymaps Set" }}
+
+-- Neovim UI Settings
+{{ nvim_default_ui_options_file or "-- No UI Options Set" }}
