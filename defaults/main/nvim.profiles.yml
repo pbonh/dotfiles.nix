@@ -81,7 +81,7 @@ nvim_default_keymap_options:
   - "vim.api.nvim_set_keymap('n', 'j', \"v:count == 0 ? 'gj' : 'j'\", { noremap = true, expr = true, silent = true })"
 nvim_default_keymap_options_file: "{{ nvim_default_keymap_options | join('\n') }}"
 nvim_default_ui_options:
-  - "vim.opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'"
+  - "vim.opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,globals'"
 nvim_default_ui_options_file: "{{ nvim_default_ui_options | join('\n') }}"
 nvim_plugin_example:
   plugin:
@@ -137,6 +137,11 @@ nvim_default_plugins:
       - "      },"
       - "    },"
       - "  },"
+      - "  pickers = {"
+      - "    find_files = {"
+      - "      theme = 'dropdown',"
+      - "    }"
+      - "  },"
       - "  extensions = {"
       - "    -- ['ui-select'] = {"
       - "    --   require('telescope.themes').get_dropdown {"
@@ -165,7 +170,7 @@ nvim_default_plugins:
       - "require('telescope').load_extension('ui-select')"
       - "require('telescope').load_extension('fzf')"
     keymaps:
-      - "{ '<leader>ff', { n = '<cmd>lua require(\\'telescope.builtin\\').find_files({previewer = false})<CR>', }, description = 'Telescope: Find Files', },"
+      - "{ '<leader>ff', { n = '<cmd>lua require(\\'telescope.builtin\\').find_files()<CR>', }, description = 'Telescope: Find Files', },"
       - "{ '<leader>fb', { n = '<cmd>lua require(\\'telescope.builtin\\').buffers()<CR>', }, description = 'Telescope: Find Open Buffers', },"
       - "{ '<leader>fh', { n = '<cmd>lua require(\\'telescope.builtin\\').help_tags()<CR>', }, description = 'Telescope: Find Help Tags', },"
       - "{ '<leader>ft', { n = '<cmd>Telescope tele_tabby list<CR>', }, description = 'Telescope: Search Tabs', },"
@@ -513,6 +518,41 @@ nvim_default_plugins:
       - "})"
     keymaps:
       - ""
+  statusline:
+    packer:
+      - "use { 'kdheepak/tabline.nvim',"
+      - "  requires = {"
+      - "    'nvim-lualine/lualine.nvim',"
+      - "    'kyazdani42/nvim-web-devicons',"
+      - "    'b0o/incline.nvim',"
+      - "  },"
+      - "}"
+    config:
+      - "require('lualine').setup({"
+      - "  -- options = { theme  = gruvbox },"
+      - "  options = {"
+      - "    section_separators = { left = '', right = '' },"
+      - "    component_separators = { left = '', right = '' },"
+      - "    globalstatus = true,"
+      - "    disabled_filetypes = {"
+      - "        'packer', 'NVimTree'"
+      - "    }"
+      - "  },"
+      - "})"
+      - "require'tabline'.setup({"
+      - "  enable = true,"
+      - "  options = {"
+      - "    max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3"
+      - "    show_tabs_always = true, -- this shows tabs only when there are more than one tab or if the first tab is named"
+      - "    show_devicons = true, -- this shows devicons in buffer section"
+      - "    show_bufnr = false, -- this appends [bufnr] to buffer section,"
+      - "    show_filename_only = false, -- shows base filename only instead of relative path in filename"
+      - "    modified_icon = '+ ', -- change the default modified icon"
+      - "  }"
+      - "})"
+      - "require('incline').setup()"
+    keymaps:
+      - "{ '<leader>_', { n = '<cmd>command<CR>', }, description = 'Description', },"
 nvim_xdg_profiles:
   musl:
     name: musl
