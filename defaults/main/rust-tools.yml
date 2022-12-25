@@ -22,6 +22,9 @@ cargo_binstall_packages:
   fd-find:
     name: fd-find
     path: "{{ cargo_path }}/fd"
+  gitui:
+    name: gitui
+    path: "{{ cargo_path }}/gitui"
   joshuto:
     name: joshuto
     path: "{{ cargo_path }}/joshuto"
@@ -34,6 +37,9 @@ cargo_binstall_packages:
   ripgrep:
     name: ripgrep
     path: "{{ cargo_path }}/rg"
+  rnr:
+    name: rnr
+    path: "{{ cargo_path }}/rnr"
   skim:
     name: skim
     path: "{{ cargo_path }}/sk"
@@ -48,10 +54,12 @@ bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
 broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
 exa_exe: "{{ cargo_binstall_packages['exa']['path'] }}"
 fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
+gitui_exe: "{{ cargo_binstall_packages['gitui']['path'] }}"
 joshuto_exe: "{{ cargo_binstall_packages['joshuto']['path'] }}"
 just_exe: "{{ cargo_binstall_packages['just']['path'] }}"
 nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
 rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
+rnr_exe: "{{ cargo_binstall_packages['rnr']['path'] }}"
 sk_exe: "{{ cargo_binstall_packages['skim']['path'] }}"
 xplr_exe: "{{ cargo_binstall_packages['xplr']['path'] }}"
 zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"
