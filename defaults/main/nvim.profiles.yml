@@ -554,6 +554,42 @@ nvim_default_plugins:
       - "require('incline').setup()"
     keymaps:
       - "{ '<leader>_', { n = '<cmd>command<CR>', }, description = 'Description', },"
+  terminal:
+    packer:
+      - "use { 'akinsho/toggleterm.nvim', tag = 'v2.*' }"
+    config:
+      - "require('toggleterm').setup({"
+      - "  size = function(term)"
+      - "    if term.direction == 'horizontal' then"
+      - "      return 25"
+      - "    elseif term.direction == 'vertical' then"
+      - "      return vim.o.columns * 0.4"
+      - "    end"
+      - "  end,"
+      - "  open_mapping = [[<c-s>]],"
+      - "  hide_numbers = true,"
+      - "  shade_filetypes = {},"
+      - "  shade_terminals = true,"
+      - "  shading_factor = '1',"
+      - "  start_in_insert = true,"
+      - "  insert_mappings = true, -- whether or not the open mapping applies in insert mode"
+      - "  persist_size = true,"
+      - "  direction = 'float',"
+      - "  close_on_exit = true,"
+      - "  shell = vim.o.shell,"
+      - "  float_opts = {"
+      - "    border = 'curved',"
+      - "    width = 120,"
+      - "    height = vim.o.lines * 50,"
+      - "    winblend = 3,"
+      - "    highlights = {"
+      - "      border = 'Normal',"
+      - "      background = 'Normal',"
+      - "    }"
+      - "  }"
+      - "})"
+    keymaps:
+      - ""
 nvim_xdg_profiles:
   musl:
     name: musl
