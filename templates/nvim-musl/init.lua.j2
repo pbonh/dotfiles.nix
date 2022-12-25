@@ -25,8 +25,9 @@ packer.startup(function(use)
 
   -- Neovim Plugins
   {% for plugin in nvim_default_plugins -%}
-    {{ nvim_default_plugins[plugin]['packer'] | join('\n') }}
+  {{ nvim_default_plugins[plugin]['packer'] | join('\n') | indent(2) }}
   {% endfor %}
+
 end)
 
 -- Neovim Editor Settings
@@ -43,12 +44,13 @@ require('legendary').setup({
   keymaps = {
     -- map keys to a command
     {% for plugin in nvim_default_plugins -%}
-      {{ nvim_default_plugins[plugin]['keymaps'] | join('\n') }}
+    {{ nvim_default_plugins[plugin]['keymaps'] | join('\n') | indent(4) }}
     {% endfor %}
+
   },
 })
 
 -- Neovim Plugin Settings
 {% for plugin in nvim_default_plugins -%}
-  {{ nvim_default_plugins[plugin]['config'] | join('\n') }}
+{{ nvim_default_plugins[plugin]['config'] | join('\n') }}
 {% endfor %}
