@@ -540,6 +540,12 @@ nvim_default_plugins:
       - "    'lewis6991/gitsigns.nvim',"
       - "  },"
       - "}"
+      - "use { 'startup-nvim/startup.nvim',"
+      - "  requires = {"
+      - "    'nvim-telescope/telescope.nvim',"
+      - "    'nvim-lua/plenary.nvim',"
+      - "  },"
+      - "}"
     config:
       - "require('modicator').setup({})"
       - "require('lualine').setup({"
@@ -568,6 +574,7 @@ nvim_default_plugins:
       - "require('scrollbar').setup()"
       - "require('gitsigns').setup()"
       - "require('hlslens').setup()"
+      - "require('startup').setup()"
     keymaps:
       - "{ 'n', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'n\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Next Search Result', },"
       - "{ 'N', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'N\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Previous Search Result', },"
