@@ -25,6 +25,9 @@ cargo_binstall_packages:
   joshuto:
     name: joshuto
     path: "{{ cargo_path }}/joshuto"
+  just:
+    name: just
+    path: "{{ cargo_path }}/just"
   nu:
     name: nu
     path: "{{ cargo_path }}/nu"
@@ -46,6 +49,7 @@ broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
 exa_exe: "{{ cargo_binstall_packages['exa']['path'] }}"
 fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
 joshuto_exe: "{{ cargo_binstall_packages['joshuto']['path'] }}"
+just_exe: "{{ cargo_binstall_packages['just']['path'] }}"
 nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
 rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
 sk_exe: "{{ cargo_binstall_packages['skim']['path'] }}"
