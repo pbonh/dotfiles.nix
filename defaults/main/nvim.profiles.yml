@@ -129,6 +129,7 @@ nvim_default_plugins:
       - "  run = 'make',"
       - "}"
       - "use { 'nvim-telescope/telescope-ui-select.nvim' }"
+      - "use { 'princejoogie/dir-telescope.nvim' }"
     config:
       - "require('telescope').setup({"
       - "  defaults = {"
@@ -172,13 +173,14 @@ nvim_default_plugins:
       - "})"
       - "require('telescope').load_extension('ui-select')"
       - "require('telescope').load_extension('fzf')"
+      - "require('telescope').load_extension('dir')"
     keymaps:
       - "{ '<leader>ff', { n = '<cmd>lua require(\\'telescope.builtin\\').find_files()<CR>', }, description = 'Telescope: Find Files', },"
       - "{ '<leader>fb', { n = '<cmd>lua require(\\'telescope.builtin\\').buffers()<CR>', }, description = 'Telescope: Find Open Buffers', },"
       - "{ '<leader>fh', { n = '<cmd>lua require(\\'telescope.builtin\\').help_tags()<CR>', }, description = 'Telescope: Find Help Tags', },"
       - "{ '<leader>ft', { n = '<cmd>Telescope tele_tabby list<CR>', }, description = 'Telescope: Search Tabs', },"
       - "{ '_', { n = '<cmd>lua require(\\'telescope.builtin\\').grep_string()<CR>', }, description = 'Telescope: Grep String(Cursor Word)', },"
-      - "{ '<leader>q', { n = '<cmd>lua require(\\'telescope-custom\\').live_grep_in_folder()<CR>', }, description = 'Telescope: Selective Live Grep Project', },"
+      - "{ '<leader>q', { n = '<cmd>Telescope dir live_grep<CR>', }, description = 'Telescope: Selective Live Grep Project', },"
       - "{ '<leader>Q', { n = '<cmd>lua require(\\'telescope.builtin\\').live_grep()<CR>', }, description = 'Telescope: Live Grep Project', },"
       - "{ '<leader>/', { n = '<cmd>lua require(\\'telescope.builtin\\').current_buffer_fuzzy_find()<CR>', }, description = 'Telescope: Find in Current Buffer', },"
       - "{ '<leader>?', { n = '<cmd>lua require(\\'telescope.builtin\\').oldfiles()<CR>', }, description = 'Telescope: Old Files', },"
@@ -532,10 +534,16 @@ nvim_default_plugins:
       - "  },"
       - "}"
       - "use 'melkster/modicator.nvim'"
+      - "use { 'petertriho/nvim-scrollbar',"
+      - "  requires = {"
+      - "    'kevinhwang91/nvim-hlslens',"
+      - "    'lewis6991/gitsigns.nvim',"
+      - "  },"
+      - "}"
     config:
       - "require('modicator').setup({})"
       - "require('lualine').setup({"
-      - "  -- options = { theme  = gruvbox },"
+      - "  options = { theme  = gruvbox },"
       - "  options = {"
       - "    section_separators = { left = '', right = '' },"
       - "    component_separators = { left = '', right = '' },"
@@ -557,8 +565,17 @@ nvim_default_plugins:
       - "  }"
       - "})"
       - "require('incline').setup()"
+      - "require('scrollbar').setup()"
+      - "require('gitsigns').setup()"
+      - "require('hlslens').setup()"
     keymaps:
-      - "{ '<leader>_', { n = '<cmd>command<CR>', }, description = 'Description', },"
+      - "{ 'n', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'n\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Next Search Result', },"
+      - "{ 'N', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'N\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Previous Search Result', },"
+      - "{ '*', { n = '*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Search Cursorword', },"
+      - "{ '#', { n = '#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Search Cursorword In Reverse', },"
+      - "{ 'g*', { n = 'g*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, 'HLSLens: Search Nearest Cursorword', },"
+      - "{ 'g#', { n = 'g#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description =  'HLSLens: Search Nearest Cursorword In Reverse', },"
+      - "{ '<C-]>', { n = ':noh<CR>', }, description = 'HLSLens: Clear Search Result', },"
   terminal:
     packer:
       - "use { 'akinsho/toggleterm.nvim',"
@@ -663,7 +680,23 @@ nvim_default_plugins:
       - "-- { '<leader>sJ', { n = '<cmd>lua require(\\'fm-nvim\\').Joshuto()<CR>', }, description = 'ToggleTerm: Joshuto(Project Root)', },"
       - "{ '<leader>sx', { n = '<cmd>lua require(\\'fm-nvim\\').Xplr(vim.fn.expand(\\'%:p:~:.:h\\'))<CR>', }, description = 'ToggleTerm: XPLR(Current File)', },"
       - "{ '<leader>sX', { n = '<cmd>lua require(\\'fm-nvim\\').Xplr()<CR>', }, description = 'ToggleTerm: XPLR(Project Root)', },"
+      - "{ '<leader>j', { n = '<cmd>lua just_terminal_runner()<CR>', }, description = 'ToggleTerm: GitUI', },"
       - "{ '<leader>gg', { n = '<cmd>lua gitui_terminal_runner()<CR>', }, description = 'ToggleTerm: GitUI', },"
+  leap:
+    packer:
+      - "use 'ggandor/leap.nvim'"
+    config:
+      - "require('leap').set_default_keymaps(true)"
+    keymaps:
+      - ""
+  colorscheme:
+    packer:
+      - "use 'sainnhe/gruvbox-material'"
+    config:
+      - "vim.o.background = 'dark'"
+      - "vim.cmd([[colorscheme gruvbox-material]])"
+    keymaps:
+      - ""
 nvim_xdg_profiles:
   musl:
     name: musl
