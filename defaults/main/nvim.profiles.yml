@@ -644,11 +644,17 @@ nvim_default_plugins:
       - "    }"
       - "  }"
       - "})"
+      - "local Terminal  = require('toggleterm.terminal').Terminal"
+      - "local justchoose = Terminal:new({ cmd = '{{ just_exe }} --choose', hidden = true })"
+      - "function just_terminal_runner()"
+      - "  justchoose:toggle()"
+      - "end"
     keymaps:
       - "-- { '<leader>sj', { n = '<cmd>lua require(\\'fm-nvim\\').Joshuto(vim.fm.expand(\\'%:p:~:.:h\\'))<CR>', }, description = 'ToggleTerm: Joshuto(Current File)', },"
       - "-- { '<leader>sJ', { n = '<cmd>lua require(\\'fm-nvim\\').Joshuto()<CR>', }, description = 'ToggleTerm: Joshuto(Project Root)', },"
       - "{ '<leader>sx', { n = '<cmd>lua require(\\'fm-nvim\\').Xplr(vim.fn.expand(\\'%:p:~:.:h\\'))<CR>', }, description = 'ToggleTerm: XPLR(Current File)', },"
       - "{ '<leader>sX', { n = '<cmd>lua require(\\'fm-nvim\\').Xplr()<CR>', }, description = 'ToggleTerm: XPLR(Project Root)', },"
+      - "{ '<leader>j', { n = '<cmd>lua just_terminal_runner()<CR>', }, description = 'ToggleTerm: Just Choose', },"
 nvim_xdg_profiles:
   musl:
     name: musl
