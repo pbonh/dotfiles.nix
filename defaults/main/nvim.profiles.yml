@@ -388,6 +388,7 @@ nvim_default_plugins:
       - "use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'nvim-treesitter/nvim-treesitter-context', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'p00f/nvim-ts-rainbow', requires = { 'nvim-treesitter/nvim-treesitter' } }"
+      - "use { 'IndianBoy42/tree-sitter-just' }"
     config:
       - "local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()"
       - "parser_configs.norg_meta = {"
