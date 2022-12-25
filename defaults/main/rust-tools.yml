@@ -31,6 +31,9 @@ cargo_binstall_packages:
   ripgrep:
     name: ripgrep
     path: "{{ cargo_path }}/rg"
+  skim:
+    name: skim
+    path: "{{ cargo_path }}/sk"
   xplr:
     name: xplr
     path: "{{ cargo_path }}/xplr"
@@ -45,5 +48,6 @@ fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
 joshuto_exe: "{{ cargo_binstall_packages['joshuto']['path'] }}"
 nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
 rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
+sk_exe: "{{ cargo_binstall_packages['skim']['path'] }}"
 xplr_exe: "{{ cargo_binstall_packages['xplr']['path'] }}"
 zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"
