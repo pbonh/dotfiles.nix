@@ -36,3 +36,21 @@
     repo: "{{ packer_url }}"
     dest: "{{ nvim_share_dir }}/{{ nvim_packer_reldir }}"
     depth: 1
+
+- name: Neovim | Find XDG Config Directories | file
+  find:
+    paths: "{{ xdg_config_dir }}"
+    file_type: "directory"
+  register: xdg_config_dirs
+
+- name: Neovim | Symlink XDG Config Directories | file
+  file:
+    src: "{{ item.path }}"
+    path: "{{ nvim_xdg_profile_dir['config'] }}/{{ nvim_profile_name }}/{{ item.path | basename }}"
+    state: link
+  with_items: "{{ xdg_config_dirs.files }}"
+
+- name: Neovim | Remove Recursive Symlink | file
+  file:
+    path: "{{ nvim_xdg_profile_dir['config'] }}/{{ nvim_profile_name }}/{{ nvim_profile_dir_name }}"
+    state: absent
