@@ -28,6 +28,7 @@ packer.startup(function(use)
   {{ nvim_default_plugins[plugin]['packer'] | join('\n') | indent(2) }}
   {% endfor %}
 
+  {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
 end)
 
 -- Neovim Editor Settings

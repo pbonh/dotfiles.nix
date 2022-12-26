@@ -57,6 +57,8 @@ extra_plugin_settings: []
 extra_lua_plugin_settings: []
 extra_nvim_language_mappings: []
 lsp_providers: []
+null_ls_providers_luafile: "{{ null_ls_providers | join(\", \") }}"
+null_ls_providers: []
 lsp_providers_luafile: "{{ \"'\" + lsp_providers | join(\"', '\") + \"'\" }}"
 lsp_providers_file: "{{ (lsp_providers_luafile != '') | ternary(lsp_providers_luafile, '-- No Additional Servers Preconfigured') }}"
 lsp_providers_plugins: []
