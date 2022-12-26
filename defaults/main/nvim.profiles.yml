@@ -5,6 +5,7 @@ nvim_xdg_profile_dir:
   share: "{{ xdg_share_dir }}/{{ nvim_profile_dir_name }}"
   cache: "{{ xdg_cache_dir }}/{{ nvim_profile_dir_name }}"
 nvim_default_editor_options:
+  - "vim.opt.shell= '{{ nvim_shell }}'"
   - "vim.opt.termguicolors = true"
   - "vim.opt.hidden = true"
   - "vim.opt.magic = true"
