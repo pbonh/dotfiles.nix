@@ -54,3 +54,39 @@
   file:
     path: "{{ nvim_xdg_profile_dir['config'] }}/{{ nvim_profile_name }}/{{ nvim_profile_dir_name }}"
     state: absent
+
+- name: Neovim | Find XDG Data Directories | file
+  find:
+    paths: "{{ xdg_share_dir }}"
+    file_type: "directory"
+  register: xdg_share_dirs
+
+- name: Neovim | Symlink XDG Data Directories | file
+  file:
+    src: "{{ item.path }}"
+    path: "{{ nvim_xdg_profile_dir['share'] }}/{{ nvim_profile_name }}/{{ item.path | basename }}"
+    state: link
+  with_items: "{{ xdg_share_dirs.files }}"
+
+- name: Neovim | Remove Recursive Symlink | file
+  file:
+    path: "{{ nvim_xdg_profile_dir['share'] }}/{{ nvim_profile_name }}/{{ nvim_profile_dir_name }}"
+    state: absent
+
+- name: Neovim | Find XDG Cache Directories | file
+  find:
+    paths: "{{ xdg_cache_dir }}"
+    file_type: "directory"
+  register: xdg_cache_dirs
+
+- name: Neovim | Symlink XDG Cache Directories | file
+  file:
+    src: "{{ item.path }}"
+    path: "{{ nvim_xdg_profile_dir['cache'] }}/{{ nvim_profile_name }}/{{ item.path | basename }}"
+    state: link
+  with_items: "{{ xdg_cache_dirs.files }}"
+
+- name: Neovim | Remove Recursive Symlink | file
+  file:
+    path: "{{ nvim_xdg_profile_dir['cache'] }}/{{ nvim_profile_name }}/{{ nvim_profile_dir_name }}"
+    state: absent
