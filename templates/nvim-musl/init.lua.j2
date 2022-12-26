@@ -28,7 +28,8 @@ packer.startup(function(use)
   {{ nvim_default_plugins[plugin]['packer'] | join('\n') | indent(2) }}
   {% endfor %}
 
-  {{ language_neovim_plugins_file or "-- No Language Plugins Installed" }}
+  {{ language_neovim_plugins_file | indent(2) or "-- No Language Plugins Installed" }}
+  {{ lsp_provider_plugins_file | indent(2) or "-- No LSP Providers Installed" }}
 end)
 
 -- Neovim Editor Settings
@@ -55,3 +56,6 @@ require('legendary').setup({
 {% for plugin in nvim_default_plugins -%}
 {{ nvim_default_plugins[plugin]['config'] | join('\n') }}
 {% endfor %}
+
+-- Neovim Plugin Settings(Extra)
+{{ extra_lua_plugin_settings_file or "-- No Extra Languages Configured" }}

@@ -1,6 +1,5 @@
 ---
-lsp_providers_rust:
-  - rust_analyzer
+lsp_providers_rust: []
 lsp_providers_rust_setup: []
 rust_extra_lua_plugin_settings: []
 rust_dap_plugin_settings:
