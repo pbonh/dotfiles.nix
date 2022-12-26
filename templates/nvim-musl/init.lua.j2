@@ -41,6 +41,14 @@ end)
 -- Neovim UI Settings
 {{ nvim_default_ui_options_file or "-- No UI Options Set" }}
 
+-- Neovim Plugin Settings
+{% for plugin in nvim_default_plugins -%}
+{{ nvim_default_plugins[plugin]['config'] | join('\n') }}
+{% endfor %}
+
+-- Neovim Plugin Settings(Extra)
+{{ extra_lua_plugin_settings_file or "-- No Extra Languages Configured" }}
+
 -- Neovim Plugin Keymap Settings
 require('legendary').setup({
   keymaps = {
@@ -52,10 +60,3 @@ require('legendary').setup({
   },
 })
 
--- Neovim Plugin Settings
-{% for plugin in nvim_default_plugins -%}
-{{ nvim_default_plugins[plugin]['config'] | join('\n') }}
-{% endfor %}
-
--- Neovim Plugin Settings(Extra)
-{{ extra_lua_plugin_settings_file or "-- No Extra Languages Configured" }}

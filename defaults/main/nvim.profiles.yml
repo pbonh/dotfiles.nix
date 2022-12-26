@@ -836,8 +836,10 @@ nvim_default_plugins:
       - "})"
     keymaps:
       - "-- { 'gd', { n = '<cmd>Lspsaga peek_definition<CR>', }, description = 'LSPSaga: Peek Definition', },"
-      - "{ 'gd', { n = '<cmd>Lspsaga lsp_finder<CR>', }, description = 'LSPSaga: Symbol Finder', },"
-      - "{ '<leader>ca', { n = '<cmd>Lspsaga code_action<CR>', }, description = 'LSPSaga: Code Action', },"
+      - "{ 'gd', { n = '<cmd>Lspsaga lsp_finder<CR>', }, description = 'LSPSaga: Definition/Reference Finder', },"
+      - "{ 'gs', { n = '<cmd>Telescope lsp_document_symbols<CR>', }, description = 'Telescope: Document Symbol Finder', },"
+      - "{ 'gS', { n = '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', }, description = 'Telescope: Workspace Symbol Finder', },"
+      - "-- { '<leader>ca', { n = '<cmd>Lspsaga code_action<CR>', }, description = 'LSPSaga: Code Action', },"
       - "{ '<leader>S', { n = '<cmd>Lspsaga outline<CR>', }, description = 'LSPSaga: Outline Toggle', },"
       - "{ 'K', { n = '<cmd>Lspsaga hover_doc<CR>', }, description = 'LSPSaga: Hover Docs', },"
       - "{ '[e', { n = '<cmd>Lspsaga diagnostic_jump_prev<CR>', }, description = 'LSPSaga: Previous Diagnostic', },"
