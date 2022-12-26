@@ -16,6 +16,9 @@ cargo_binstall_packages:
   broot:
     name: broot
     path: "{{ cargo_path }}/broot"
+  difftastic:
+    name: difftastic
+    path: "{{ cargo_path }}/difftastic"
   exa:
     name: exa
     path: "{{ cargo_path }}/exa"
@@ -52,6 +55,7 @@ cargo_binstall_packages:
 rustc_env_variables: ""
 bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
 broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
+difftastic_exe: "{{ cargo_binstall_packages['difftastic']['path'] }}"
 exa_exe: "{{ cargo_binstall_packages['exa']['path'] }}"
 fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
 gitui_exe: "{{ cargo_binstall_packages['gitui']['path'] }}"
