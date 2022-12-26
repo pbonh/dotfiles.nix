@@ -52,7 +52,6 @@ end)
 -- Neovim Plugin Keymap Settings
 require('legendary').setup({
   keymaps = {
-    -- map keys to a command
     {% for plugin in nvim_default_plugins -%}
     {{ nvim_default_plugins[plugin]['keymaps'] | join('\n') | indent(4) }}
     {% endfor %}

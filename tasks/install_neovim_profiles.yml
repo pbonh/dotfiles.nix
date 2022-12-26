@@ -1,9 +1,12 @@
 ---
 - name: Neovim | Setup Neovim Config Directory | file
   file:
-    path: "{{ nvim_config_dir }}"
+    path: "{{ nvim_config_dir }}{{ item }}"
     state: directory
     mode: '0755'
+  loop:
+    - ""
+    - "/ftplugin"
 
 - name: Neovim | Setup Neovim Share(Data) Directory | file
   file:
@@ -48,7 +51,7 @@
     src: "{{ item.path }}"
     path: "{{ nvim_xdg_profile_dir['config'] }}/{{ nvim_profile_name }}/{{ item.path | basename }}"
     state: link
-  with_items: "{{ xdg_config_dirs.files }}"
+  loop: "{{ xdg_config_dirs.files }}"
 
 - name: Neovim | Remove Recursive Symlink | file
   file:
@@ -66,7 +69,7 @@
     src: "{{ item.path }}"
     path: "{{ nvim_xdg_profile_dir['share'] }}/{{ nvim_profile_name }}/{{ item.path | basename }}"
     state: link
-  with_items: "{{ xdg_share_dirs.files }}"
+  loop: "{{ xdg_share_dirs.files }}"
 
 - name: Neovim | Remove Recursive Symlink | file
   file:
@@ -84,9 +87,17 @@
     src: "{{ item.path }}"
     path: "{{ nvim_xdg_profile_dir['cache'] }}/{{ nvim_profile_name }}/{{ item.path | basename }}"
     state: link
-  with_items: "{{ xdg_cache_dirs.files }}"
+  loop: "{{ xdg_cache_dirs.files }}"
 
 - name: Neovim | Remove Recursive Symlink | file
   file:
     path: "{{ nvim_xdg_profile_dir['cache'] }}/{{ nvim_profile_name }}/{{ nvim_profile_dir_name }}"
     state: absent
+
+- name: Neovim | Create FTPlugin Files | file
+  vars:
+    ftplugin_settings: "{{ item.0.mappings }}"
+  ansible.builtin.template:
+    src: nvim/ftplugin.j2
+    dest: "{{ nvim_config_dir }}/ftplugin/{{ item.1 }}.lua"
+  loop: "{{ extra_nvim_language_mappings | subelements('ext') }}"
