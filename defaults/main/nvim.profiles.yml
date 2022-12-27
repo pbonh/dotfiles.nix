@@ -91,7 +91,7 @@ nvim_plugin_example:
     packer:
       - "use 'path/to/plugin'"
     config:
-      - "require('plugin').setup({})"
+      - "require('plugin').setup()"
     keymaps:
       - "{ '<leader>_', { n = '<cmd>command<CR>', }, description = 'Description', },"
 nvim_default_plugins:
@@ -556,7 +556,7 @@ nvim_default_plugins:
       - "  },"
       - "}"
     config:
-      - "require('modicator').setup({})"
+      - "require('modicator').setup()"
       - "require('lualine').setup({"
       - "  options = { theme  = gruvbox },"
       - "  options = {"
@@ -698,13 +698,27 @@ nvim_default_plugins:
       - "{ '<leader>sX', { n = '<cmd>lua require(\\'fm-nvim\\').Xplr()<CR>', }, description = 'ToggleTerm: XPLR(Project Root)', },"
       - "{ '<leader>j', { n = '<cmd>lua just_terminal_runner()<CR>', }, description = 'ToggleTerm: GitUI', },"
       - "{ '<leader>gg', { n = '<cmd>lua gitui_terminal_runner()<CR>', }, description = 'ToggleTerm: GitUI', },"
-  leap:
+  motion:
     packer:
-      - "use 'ggandor/leap.nvim'"
+      - "use { 'ggandor/leap-spooky.nvim',"
+      - "  requires = {"
+      - "    'ggandor/leap.nvim',"
+      - "  },"
+      - "}"
+      - "use { 'cbochs/portal.nvim',"
+      - "  requires = {"
+      - "    'cbochs/grapple.nvim',  -- Optional: provides the 'grapple' query item"
+      - "    'ThePrimeagen/harpoon', -- Optional: provides the 'harpoon' query item"
+      - "  },"
+      - "}"
     config:
       - "require('leap').set_default_keymaps(true)"
+      - "require('leap-spooky').setup()"
+      - "require('portal').setup()"
     keymaps:
       - ""
+      - "{ '<C-o>', { n = '<cmd>lua require(\\'portal\\').jump_backward()<CR>', }, description = 'Portal: Jump Backward', },"
+      - "{ '<C-i>', { n = '<cmd>lua require(\\'portal\\').jump_forward()<CR>', }, description = 'Portal: Jump Forward', },"
   colorscheme:
     packer:
       - "use 'sainnhe/gruvbox-material'"
