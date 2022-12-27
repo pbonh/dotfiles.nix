@@ -88,7 +88,6 @@ lsp_provider_neovim_plugins_file: "{{ lsp_provider_neovim_plugins | join('\n') }
 language_neovim_plugins_file: "{{ language_neovim_plugins | join('\n') }}"
 treesitter_parsers_file: "{{ '\"' + treesitter_parsers_all |join('\", \"') + '\"' }}"
 treesitter_parsers_custom_file: "{{ treesitter_custom_parsers_info | join('\n') }}"
-treesitter_extra_config_file: "{{ treesitter_extra_config | join('\n') }}"
 refactoring_settings_file: "{{ refactoring_settings | join('\n') }}"
 telescope_picker_config_file: "{{ telescope_picker_config | join('\n') }}"
 nvim_completion_config_file: "{{ nvim_completion_config | join('\n') }}"

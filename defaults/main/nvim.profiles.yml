@@ -493,7 +493,7 @@ nvim_default_plugins:
       - "      clear_on_cursor_move = false,"
       - "    },"
       - "  },"
-      - "  {{ treesitter_extra_config_file or '-- No Extra Treesitter Config' }}"
+      - "  {{ treesitter_extra_config_cpp | join('\n') | indent(2) or '-- No Extra Treesitter Config' }}"
       - "})"
       - "require('treesitter-context').setup({"
       - "    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)"
@@ -743,6 +743,7 @@ nvim_default_plugins:
       - "  sources = {"
       - "    { name = 'nvim_lsp' },"
       - "    { name = 'buffer' },"
+      - "    { name = 'luasnip' },"
       - "    { name = 'path' },"
       - "  },"
       - "  formatting = {"
@@ -752,6 +753,7 @@ nvim_default_plugins:
       - "      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)"
       - "    })"
       - "  },"
+      - "  {{ nvim_completion_config_cpp | join('\n') | indent(2) or '-- No Extra Completion Config' }}"
       - "})"
       - "local on_attach = function(_, bufnr)"
       - "  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]"
@@ -863,8 +865,8 @@ nvim_default_plugins:
       - "  }"
       - "}"
     config:
+      - "local dap = require('dap')"
       - "require('dapui').setup()"
-      - "{{ dap_plugin_settings_file or '-- No DAP Languages Configured' }}"
       - "require('nvim-dap-virtual-text').setup()"
     keymaps:
       - "{ '<leader>db', { n = '<cmd>lua require(\\'dap\\').toggle_breakpoint()<CR>', }, description = 'DAP: Toggle Breakpoint', },"
@@ -880,6 +882,7 @@ nvim_default_plugins:
       - "{ '<F10>', { n = '<cmd>lua require(\\'dap\\').step_over()<CR>', }, description = 'DAP: Step Over', },"
       - "{ '<F11>', { n = '<cmd>lua require(\\'dap\\').step_into()<CR>', }, description = 'DAP: Step Into', },"
       - "{ '<F12>', { n = '<cmd>lua require(\\'dap\\').step_out()<CR>', }, description = 'DAP: Step Out', },"
+nvim_extra_plugins: {}
 nvim_xdg_profiles:
   musl:
     name: musl
