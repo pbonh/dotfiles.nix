@@ -700,9 +700,10 @@ nvim_default_plugins:
       - "{ '<leader>gg', { n = '<cmd>lua gitui_terminal_runner()<CR>', }, description = 'ToggleTerm: GitUI', },"
   motion:
     packer:
-      - "use { 'ggandor/leap-spooky.nvim',"
+      - "use { 'ggandor/flit.nvim',"
       - "  requires = {"
       - "    'ggandor/leap.nvim',"
+      - "    'ggandor/leap-spooky.nvim',"
       - "  },"
       - "}"
       - "use { 'cbochs/portal.nvim',"
@@ -714,6 +715,7 @@ nvim_default_plugins:
     config:
       - "require('leap').set_default_keymaps(true)"
       - "require('leap-spooky').setup()"
+      - "require('flit').setup()"
       - "require('portal').setup()"
     keymaps:
       - ""
