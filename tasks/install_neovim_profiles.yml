@@ -1,4 +1,13 @@
 ---
+- name: Neovim | Remove Unused Directories | file
+  file:
+    path: "{{ item }}/nvim"
+    state: absent
+  loop:
+    - "{{ xdg_config_dir }}"
+    - "{{ xdg_share_dir }}"
+    - "{{ xdg_cache_dir }}"
+
 - name: Neovim | Setup Neovim Config Directory | file
   file:
     path: "{{ nvim_config_dir }}{{ item }}"
