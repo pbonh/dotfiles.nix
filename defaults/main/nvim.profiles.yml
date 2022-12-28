@@ -640,7 +640,7 @@ nvim_default_plugins:
       - "  cmds = {"
       - "    fzf_cmd     = '{{ fzf_exe }} --preview \\'{{ bat_exe }} --style=numbers --color=always --line-range :500 {}\\'',"
       - "    xplr_cmd    = '{{ xplr_exe }}',"
-      - "    skim_cmd    = '{{ sk_exe }}',"
+      - "    skim_cmd    = '{{ skim_exe }}',"
       - "    broot_cmd   = '{{ broot_exe }}',"
       - "    joshuto_cmd = '{{ joshuto_exe }}',"
       - "  },"

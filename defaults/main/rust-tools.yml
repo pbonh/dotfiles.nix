@@ -49,6 +49,9 @@ cargo_binstall_packages:
   skim:
     name: skim
     path: "{{ cargo_path }}/sk"
+  starship:
+    name: starship
+    path: "{{ cargo_path }}/starship"
   xplr:
     name: xplr
     path: "{{ cargo_path }}/xplr"
@@ -68,6 +71,7 @@ lsd_exe: "{{ cargo_binstall_packages['lsd']['path'] }}"
 nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
 rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
 rnr_exe: "{{ cargo_binstall_packages['rnr']['path'] }}"
-sk_exe: "{{ cargo_binstall_packages['skim']['path'] }}"
+skim_exe: "{{ cargo_binstall_packages['skim']['path'] }}"
+starship_exe: "{{ cargo_binstall_packages['starship']['path'] }}"
 xplr_exe: "{{ cargo_binstall_packages['xplr']['path'] }}"
 zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"
