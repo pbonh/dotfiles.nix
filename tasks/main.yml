@@ -34,6 +34,11 @@
   tags:
     - bash
 
+- name: Install Tcsh Config
+  import_tasks: tasks/install_tcsh.yml
+  tags:
+    - tcsh
+
 - name: Install Git Config
   import_tasks: tasks/install_git.yml
   tags:
