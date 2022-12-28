@@ -197,31 +197,20 @@ fzf_kill() {
 alias zhome='{{ zellij_exe }} --layout homelab'
 alias zllhd='{{ zellij_exe }} --layout llhd'
 alias v=nvim-musl
-alias cat={{ nix_bin }}/bat
-#alias ls='{{ nix_bin }}/exa  --group-directories-first'
-alias ls='{{ nix_bin}}/lsd --group-dirs first'
+alias cat={{ bat_exe }}
+#alias ls='{{ exa_exe }}/exa  --group-directories-first'
+alias ls='{{ lsd_exe }} --group-dirs first'
+alias cdg='source change_directory_bookmarks'
+alias mkcd='source make_directory_then_change'
 alias ffe='fzf_find_edit'
 alias fcd='fzf_change_directory'
 alias fcdd='fzf_change_directory_arg'
 alias fge='fzf_grep_edit'
 alias fkill='fzf_kill'
-alias fsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type f "{}"'"'"''
-alias gsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/rg --color=always --line-number "{}"'"'"''
-alias dsk='{{ nix_bin }}/sk --ansi -i -c '"'"'{{ nix_bin }}/fd --type d "{}"'"'"''
-alias skvi='f(){ x="$({{ nix_bin }}/sk --bind "ctrl-p:toggle-preview" --ansi --preview="{{ nix_bin }}/bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
-unalias mkcd 2> /dev/null
-mkcd () {
-  mkdir "$1"
-  cd "$1"
-}
-unalias cdg 2> /dev/null
-cdg() {
-   local dest_dir=$(cdscuts_glob_echo | {{ nix_bin }}/fzf )
-   if [[ $dest_dir != '' ]]; then
-      cd "$dest_dir"
-   fi
-}
-#export -f cdg > /dev/null
+alias fsk='{{ skim_exe }} --ansi -i -c '"'"'{{ fd_exe }} --type f "{}"'"'"''
+alias gsk='{{ skim_exe }} --ansi -i -c '"'"'{{ rg_exe }} --color=always --line-number "{}"'"'"''
+alias dsk='{{ skim_exe }} --ansi -i -c '"'"'{{ fd_exe }} --type d "{}"'"'"''
+alias skvi='f(){ x="$({{ skim_exe }} --bind "ctrl-p:toggle-preview" --ansi --preview="{{ bat_exe }} {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
 {{ extra_zsh_aliases_file or "# No Extra Zsh Aliases Installed" }}
 # END: Aliases
 ###############################################################################
