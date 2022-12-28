@@ -29,6 +29,11 @@
   tags:
     - zsh
 
+- name: Install Nushell Config
+  import_tasks: tasks/install_nushell.yml
+  tags:
+    - nushell
+
 - name: Install Bash Config
   import_tasks: tasks/install_bash.yml
   tags:
