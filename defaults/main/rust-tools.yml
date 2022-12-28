@@ -18,7 +18,7 @@ cargo_binstall_packages:
     path: "{{ cargo_path }}/broot"
   difftastic:
     name: difftastic
-    path: "{{ cargo_path }}/difftastic"
+    path: "{{ cargo_path }}/difft"
   exa:
     name: exa
     path: "{{ cargo_path }}/exa"
