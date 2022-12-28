@@ -2,8 +2,9 @@
 tcsh_config_file: "{{ dotfiles_user_home }}/.cshrc"
 tcsh_config_dir: "{{ xdg_config_dir }}/tcsh"
 tcsh_env: |
-  set path = ($path {{ bin_directory }})
   set path = ($path {{ cargo_path }})
+  set path = ($path {{ bin_directory }})
+  #setenv PATH $PATH\:{{ cargo_path }}\:{{ bin_directory }}
   setenv FZF_COMPLETION_OPTS '+c -x'
   setenv FZF_DEFAULT_COMMAND '{{ fd_exe }} --type f'
   setenv FZF_CTRL_T_COMMAND '$FZF_DEFAULT_COMMAND'
