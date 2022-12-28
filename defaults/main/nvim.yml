@@ -3,6 +3,7 @@ nvim_appimage_version: v0.8.1
 nvim_appimage_url: "https://github.com/neovim/neovim/releases/download/{{ nvim_appimage_version }}/nvim.appimage"
 nvim_appimage_exe: "{{ bin_directory }}/nvim.appimage"
 nvim_exe: "{{ nix_bin }}/nvim"
+nvim_cmd: "{{ nvim_exe }}"
 nvim_path_settings:
   - "-- vim.opt.runtimepath:remove(vim.fn.expand('{{ default_nvim_config_dir }}'))"
   - "-- vim.opt.packpath:remove(vim.fn.expand('{{ default_nvim_share_dir }}/site'))"
