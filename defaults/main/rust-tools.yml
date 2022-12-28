@@ -34,6 +34,9 @@ cargo_binstall_packages:
   just:
     name: just
     path: "{{ cargo_path }}/just"
+  lsd:
+    name: lsd
+    path: "{{ cargo_path }}/lsd"
   nu:
     name: nu
     path: "{{ cargo_path }}/nu"
@@ -61,6 +64,7 @@ fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
 gitui_exe: "{{ cargo_binstall_packages['gitui']['path'] }}"
 joshuto_exe: "{{ cargo_binstall_packages['joshuto']['path'] }}"
 just_exe: "{{ cargo_binstall_packages['just']['path'] }}"
+lsd_exe: "{{ cargo_binstall_packages['lsd']['path'] }}"
 nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
 rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
 rnr_exe: "{{ cargo_binstall_packages['rnr']['path'] }}"
