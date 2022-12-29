@@ -399,6 +399,7 @@ nvim_default_plugins:
       - "use { 'nvim-treesitter/nvim-treesitter-refactor', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'p00f/nvim-ts-rainbow', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'IndianBoy42/tree-sitter-just' }"
+      - "use 'David-Kunz/markid'"
     config:
       - "local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()"
       - "parser_configs.norg_meta = {"
@@ -496,6 +497,7 @@ nvim_default_plugins:
       - "      clear_on_cursor_move = false,"
       - "    },"
       - "  },"
+      - "markid = { enable = true },"
       - "  {{ treesitter_extra_config_cpp | join('\n') | indent(2) or '-- No Extra Treesitter Config' }}"
       - "})"
       - "require('treesitter-context').setup({"
