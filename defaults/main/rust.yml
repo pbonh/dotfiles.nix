@@ -8,9 +8,13 @@ rust_tools_nix:
   - rust-analyzer
   - rustfmt
   - clippy
+  - vscode-extensions.vadimcn.vscode-lldb
 rust_file_extensions:
   - rust
 rust_file_extensions_comma_list: "{{ '\"' + rust_file_extensions |join('\", \"') + '\"' }}"
+rust_dbg: "{{ nix_bin }}/rust-lldb"
+codelldb_extension_url: https://github.com/vadimcn/vscode-lldb.git
+codelldb_install_path: "{{ lookup('env', 'NIX_CODELLDB_PATH') }}"
 lsp_providers_rust: []
 lsp_providers_rust_setup: []
 rust_extra_lua_plugin_settings: []
@@ -22,6 +26,12 @@ extra_nvim_plugins_rust:
   - "  }"
   - "}"
 extra_nvim_config_rust:
+  - "dap.adapters.rustdbg = {"
+  - "  id = 'rustdbg',"
+  - "  type = 'executable',"
+  - "  command = '{{ rust_dbg }}',"
+  - "  name = 'rustdbg'"
+  - "}"
   - "dap.configurations.rust = {"
   - "  {"
   - "    name = \"Rust Debug\","
@@ -35,7 +45,21 @@ extra_nvim_config_rust:
   - "    stopOnEntry = true,"
   - "  },"
   - "}"
+  - "-- Update this path"
+  - "local extension_path = '{{ codelldb_install_path }}/'"
+  - "local codelldb_path = extension_path .. 'adapter/codelldb'"
+  - "local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'"
   - "local opts = {"
+  - "  tools = {"
+  - "    hover_actions = {"
+  - "      auto_focus = true,"
+  - "    },"
+  - "  },"
+  - "  dap = {"
+  - "      adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)"
+  - "  },"
+  - "}"
+  - "local opts_basic = {"
   - "  tools = {"
   - "    hover_actions = {"
   - "      auto_focus = true,"
