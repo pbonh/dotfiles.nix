@@ -23,7 +23,7 @@
     dest: "{{ nvim_macos_install_download }}"
     mode: 0755
 
-- name: Neovim | Fix Neovim Download Permissions | get_url
+- name: Neovim | Fix Neovim Download Permissions | shell
   when: ansible_distribution == 'MacOSX'
   shell: "xattr -c {{ nvim_macos_install_download }}"
 
