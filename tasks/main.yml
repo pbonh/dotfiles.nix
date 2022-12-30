@@ -14,6 +14,11 @@
   tags:
     - rust-tools
 
+- name: Nix | Install FZF | task
+  import_tasks: tasks/install_fzf.yml
+  tags:
+    - fzf
+
 - name: Nix | Install Python Tools | task
   import_tasks: tasks/install_python_tools.yml
   tags:

@@ -10,4 +10,3 @@ gcc_exe: "{{ nix_bin }}/gcc"
 lang_tools_nix: []
 lang_tools_nix_file: "{{ lang_tools_nix | join('\n') }}"
 nvim_python_exe: "{{ nix_bin }}/nvim-python3"
-fzf_exe: "{{ nix_bin }}/fzf"
