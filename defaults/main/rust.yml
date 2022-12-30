@@ -15,6 +15,8 @@ rust_file_extensions_comma_list: "{{ '\"' + rust_file_extensions |join('\", \"')
 rust_dbg: "{{ nix_bin }}/rust-lldb"
 codelldb_extension_url: https://github.com/vadimcn/vscode-lldb.git
 codelldb_install_path: "{{ lookup('env', 'NIX_CODELLDB_PATH') }}"
+codelldb_bin_path: adapter/codelldb
+codelldb_liblldb_path: lldb/lib/liblldb.so
 lsp_providers_rust: []
 lsp_providers_rust_setup: []
 rust_extra_lua_plugin_settings: []
@@ -48,8 +50,8 @@ extra_nvim_config_rust:
   - "}"
   - "-- Update this path"
   - "local extension_path = '{{ codelldb_install_path }}/'"
-  - "local codelldb_path = extension_path .. 'adapter/codelldb'"
-  - "local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'"
+  - "local codelldb_path = extension_path .. '{{ codelldb_bin_path }}'"
+  - "local liblldb_path = extension_path .. '{{ codelldb_liblldb_path }}'"
   - "local opts = {"
   - "  tools = {"
   - "    hover_actions = {"
