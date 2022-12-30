@@ -6,3 +6,4 @@ xdg_config_dir: "{{ dotfiles_user_home }}/.config"
 xdg_cache_dir:  "{{ dotfiles_user_home }}/.cache"
 extra_bookmarks: []
 extra_bookmarks_file: "{{ extra_bookmarks | join('\n') }}"
+gcc_exe: /usr/bin/gcc
