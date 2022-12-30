@@ -4,7 +4,7 @@
 #  args:
 #    executable: /bin/bash
 #    creates: "{{ bin_directory }}/navi"
-#
+
 - name: Navi | Create Navi Cheats Directory | file
   file:
     path: "{{ xdg_config_dir_navi_cheats }}"
