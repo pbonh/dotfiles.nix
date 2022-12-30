@@ -24,3 +24,17 @@
   args:
     creates: "{{ item.value.path }}"
   loop: "{{ cargo_binstall_packages | dict2items }}"
+
+- name: Install Cargo/Rust Tools for Rust Development
+  shell: "{{ rustc_env_variables }} {{ cargo_binstall_exe }} --no-confirm {{ item.value.name }}"
+  args:
+    creates: "{{ item.value.path }}"
+  loop: "{{ rust_dev_packages | dict2items }}"
+
+- name: Rust | Install Tools for Rust Development(MacOS) | shell
+  when: ansible_distribution == 'MacOSX'
+  shell: "{{ item }}"
+  loop:
+    - "rustup component add rust-src"
+    - "rustup component add clippy"
+    - "rustup component add rust-analyzer"

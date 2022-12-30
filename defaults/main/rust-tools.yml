@@ -87,3 +87,4 @@ skim_exe: "{{ cargo_binstall_packages['skim']['path'] }}"
 starship_exe: "{{ cargo_binstall_packages['starship']['path'] }}"
 xplr_exe: "{{ cargo_binstall_packages['xplr']['path'] }}"
 zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"
+rust_dev_packages: {}
