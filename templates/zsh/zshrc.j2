@@ -12,8 +12,8 @@ fpath=({{ zsh_completions }} $fpath)
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/nix.sh
-. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/hm-session-vars.sh
+#. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/nix.sh
+#. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/hm-session-vars.sh
 # source ~/.nix-profile/etc/profile.d/nix.sh
 export PATH=$PATH:{{ bin_directory }}
 # export PATH=$PATH:{{ nix_bin }}
@@ -31,8 +31,8 @@ if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
     export VISUAL="{{ nix_bin }}/nvr -cc split --remote-wait +'set bufhidden=wipe'"
     export EDITOR="{{ nix_bin }}/nvr -cc split --remote-wait +'set bufhidden=wipe'"
 else
-    export VISUAL="{{ nix_bin }}/nvim"
-    export EDITOR="{{ nix_bin }}/nvim"
+    export VISUAL="{{ nvim_exe }}"
+    export EDITOR="{{ nvim_exe }}"
 fi
 # END: Environment
 ###############################################################################
