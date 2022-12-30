@@ -19,6 +19,9 @@ cargo_binstall_packages:
   difftastic:
     name: difftastic
     path: "{{ cargo_path }}/difft"
+  du-dust:
+    name: du-dust
+    path: "{{ cargo_path }}/dust"
   exa:
     name: exa
     path: "{{ cargo_path }}/exa"
@@ -68,6 +71,7 @@ rustc_env_variables: ""
 bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
 broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
 difftastic_exe: "{{ cargo_binstall_packages['difftastic']['path'] }}"
+dust_exe: "{{ cargo_binstall_packages['du-dust']['path'] }}"
 exa_exe: "{{ cargo_binstall_packages['exa']['path'] }}"
 fd_exe: "{{ cargo_binstall_packages['fd-find']['path'] }}"
 gitui_exe: "{{ cargo_binstall_packages['gitui']['path'] }}"
