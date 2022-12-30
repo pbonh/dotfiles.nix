@@ -46,15 +46,15 @@ fi
 # eval "$({{ nix_bin }}/starship init zsh)"
 eval "$({{ nix_bin }}/direnv hook zsh)"
 eval "$({{ nix_bin }}/zoxide init zsh)"
-# eval "$({{ nix_bin }}/navi widget zsh)"
+# eval "$({{ navi_exe }} widget zsh)"
 _navi_call() {
-   local result="$({{ nix_bin }}/navi "$@" </dev/tty)"
+   local result="$({{ navi_exe }} "$@" </dev/tty)"
    printf "%s" "$result"
 }
 
 _navi_widget() {
    local -r input="${LBUFFER}"
-   local -r last_command="$(echo "${input}" | {{ nix_bin }}/navi fn widget::last_command)"
+   local -r last_command="$(echo "${input}" | {{ navi_exe }} fn widget::last_command)"
    local replacement="$last_command"
 
    if [ -z "$last_command" ]; then
@@ -251,7 +251,6 @@ export POWERLEVEL10K_MODE=nerdfont-complete
 
 ###############################################################################
 # BEGIN: Screenfetch
-#{{ nix_bin }}/screenfetch
 {{ macchina_exe }}
 # END: Screenfetch
 ###############################################################################

@@ -1,5 +1,11 @@
 ---
-- name: Create Navi Directory
+#- name: Navi | Install navi | shell
+#  shell: "BIN_DIR={{ bin_directory }} bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)"
+#  args:
+#    executable: /bin/bash
+#    creates: "{{ bin_directory }}/navi"
+#
+- name: Navi | Create Navi Cheats Directory | file
   file:
     path: "{{ xdg_config_dir_navi_cheats }}"
     state: directory

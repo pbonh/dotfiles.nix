@@ -40,6 +40,9 @@ cargo_binstall_packages:
   macchina:
     name: macchina
     path: "{{ cargo_path }}/macchina"
+  navi:
+    name: navi
+    path: "{{ cargo_path }}/navi"
   nu:
     name: nu
     path: "{{ cargo_path }}/nu"
@@ -72,6 +75,7 @@ joshuto_exe: "{{ cargo_binstall_packages['joshuto']['path'] }}"
 just_exe: "{{ cargo_binstall_packages['just']['path'] }}"
 lsd_exe: "{{ cargo_binstall_packages['lsd']['path'] }}"
 macchina_exe: "{{ cargo_binstall_packages['macchina']['path'] }}"
+navi_exe: "{{ cargo_binstall_packages['navi']['path'] }}"
 nu_exe: "{{ cargo_binstall_packages['nu']['path'] }}"
 rg_exe: "{{ cargo_binstall_packages['ripgrep']['path'] }}"
 rnr_exe: "{{ cargo_binstall_packages['rnr']['path'] }}"
