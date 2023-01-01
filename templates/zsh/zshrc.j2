@@ -100,6 +100,7 @@ export PATH=$PATH:{{ zsh_git_fuzzy }}/bin
 export GF_BASE_REMOTE={{ zsh_git_fuzzy_upstream }}
 export GF_BASE_BRANCH={{ zsh_git_fuzzy_branch }}
 # Options for fzf
+source {{ fzf_install_dir }}/shell/key-bindings.zsh
 {% for fzf_env_var in fzf_env -%}
 {{ "export " + fzf_env[fzf_env_var]['name'] + "='" + fzf_env[fzf_env_var]['env'] + "'" }}
 {% endfor %}
