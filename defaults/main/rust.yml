@@ -21,6 +21,7 @@ lsp_providers_rust: []
 lsp_providers_rust_setup: []
 rust_extra_lua_plugin_settings: []
 rust_analyzer_exe: "rust-analyzer"
+clippy_exe: "cargo-clippy"
 extra_nvim_plugins_rust:
   - "use { 'simrat39/rust-tools.nvim',"
   - "  requires = {"
@@ -59,7 +60,14 @@ extra_nvim_config_rust:
   - "    },"
   - "  },"
   - "  server = {"
-  - "    cmd = { \"{{ rust_analyzer_exe }}\" }"
+  - "    cmd = { \"{{ rust_analyzer_exe }}\" },"
+  - "    settings = {"
+  - "      ['rust-analyzer'] = {"
+  - "        checkOnSave = {"
+  - "          command = 'clippy',"
+  - "        },"
+  - "      },"
+  - "    }"
   - "  }, -- rust-analyzer options"
   - "  dap = {"
   - "      adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)"
