@@ -100,17 +100,9 @@ export PATH=$PATH:{{ zsh_git_fuzzy }}/bin
 export GF_BASE_REMOTE={{ zsh_git_fuzzy_upstream }}
 export GF_BASE_BRANCH={{ zsh_git_fuzzy_branch }}
 # Options for fzf
-export FZF_COMPLETION_OPTS='+c -x'
-export FZF_DEFAULT_COMMAND='{{ fd_exe }} --type f'
-#export FZF_DEFAULT_COMMAND='{{ fd_exe }} --type f --color=never'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview '{{ bat_exe }} --color=always --line-range :500 {}'"
-export FZF_ALT_C_COMMAND='{{ fd_exe }} --type d . --color=never'
-export FZF_DEFAULT_OPTS='
-  --height 75% --multi --reverse
-  --bind ctrl-f:page-down,ctrl-b:page-up
-'
-#export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+{% for fzf_env_var in fzf_env -%}
+{{ "export " + fzf_env[fzf_env_var]['name'] + "='" + fzf_env[fzf_env_var]['env'] + "'" }}
+{% endfor %}
 export SKIM_DEFAULT_COMMAND="{{ fd_exe }} --type f || git ls-tree -r --name-only HEAD || {{ rg_exe }} --files || find ."
 
 fzf_find_edit() {

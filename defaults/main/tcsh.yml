@@ -5,12 +5,9 @@ tcsh_env: |
   set path = ($path {{ cargo_path }})
   set path = ($path {{ bin_directory }})
   #setenv PATH $PATH\:{{ cargo_path }}\:{{ bin_directory }}
-  setenv FZF_COMPLETION_OPTS '+c -x'
-  setenv FZF_DEFAULT_COMMAND '{{ fd_exe }} --type f'
-  setenv FZF_CTRL_T_COMMAND '$FZF_DEFAULT_COMMAND'
-  setenv FZF_CTRL_T_OPTS '--preview "{{ bat_exe }} --color=always --line-range :500 {}"'
-  setenv FZF_ALT_C_COMMAND '{{ fd_exe }} --type d . --color=never'
-  setenv FZF_DEFAULT_OPTS '--height 75% --multi --reverse --bind ctrl-f:page-down,ctrl-b:page-up'
+  {% for fzf_env_var in fzf_env -%}
+  {{ "setenv " + fzf_env[fzf_env_var]['name'] + " '" + fzf_env[fzf_env_var]['env'] + "'" }}
+  {% endfor %}
   setenv SKIM_DEFAULT_COMMAND '{{ fd_exe }} --type f || git ls-tree -r --name-only HEAD || {{ rg_exe }} --files || find .'
 tcsh_aliases: |
   alias mkcd 'mkdir \!:1 && cd \!:1'

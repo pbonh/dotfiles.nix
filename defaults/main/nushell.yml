@@ -57,12 +57,9 @@ nushell_default_env: |
 nushell_env: |
   let-env PATH = ($env.PATH | split row (char esep) | append '{{ cargo_path }}')
   let-env PATH = ($env.PATH | split row (char esep) | append '{{ bin_directory }}')
-  let-env FZF_COMPLETION_OPTS = '+c -x'
-  let-env FZF_DEFAULT_COMMAND = '{{ fd_exe }} --type f'
-  let-env FZF_CTRL_T_COMMAND = '$FZF_DEFAULT_COMMAND'
-  let-env FZF_CTRL_T_OPTS = '--preview "{{ bat_exe }} --color=always --line-range :500 {}"'
-  let-env FZF_ALT_C_COMMAND = '{{ fd_exe }} --type d . --color=never'
-  let-env FZF_DEFAULT_OPTS = '--height 75% --multi --reverse --bind ctrl-f:page-down,ctrl-b:page-up'
+  {% for fzf_env_var in fzf_env -%}
+  {{ "let-env " + fzf_env[fzf_env_var]['name'] + " = '" + fzf_env[fzf_env_var]['env'] + "'" }}
+  {% endfor %}
   let-env SKIM_DEFAULT_COMMAND = '{{ fd_exe }} --type f || git ls-tree -r --name-only HEAD || {{ rg_exe }} --files || find .'
   mkdir ~/.cache/starship
   starship init nu | save -f ~/.cache/starship/init.nu
