@@ -614,7 +614,7 @@ nushell_default_config: |
         }
       }
       {
-        name: navi_cheats
+        name: ls_inline_fzf
         modifier: control
         keycode: char_t
         mode: [emacs, vi_normal, vi_insert]
@@ -633,16 +633,19 @@ nushell_default_config: |
           cmd: "commandline ({{ navi_exe }})"
         }
       }
-     #{
-     #  name: change_dir_with_fzf
-     #  modifier: control
-     #  keycode: char_d
-     #  mode: emacs
-     #  event: {
-     #    send: executehostcommand,
-     #    cmd: "cd (ls | where type == dir | each { |it| $it.name} | str join (char nl) | {{ fzf_exe }} | decode utf-8 | str trim)"
-     #  }
-     #}
+      {
+        name: change_dir_with_fzf
+        modifier: control
+        keycode: char_f
+        mode: emacs
+        event: [
+          { edit: Clear }
+          { edit: InsertString,
+            value: "commandline (cd (ls | where type == dir | each { |it| $it.name} | str join (char nl) | {{ fzf_exe }} | decode utf-8 | str trim))"
+          }
+          { send: Enter }
+        ]
+      }
      #{
      #  name: history_menu
      #  modifier: control
