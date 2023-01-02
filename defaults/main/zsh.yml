@@ -18,13 +18,14 @@ zsh_default_options: |
   compinit
   #. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/nix.sh
   #. /home/{{ zsh_username }}/.nix-profile/etc/profile.d/hm-session-vars.sh
+zsh_default_env: |
   export PATH=$PATH:{{ bin_directory }}
   export PATH=$PATH:{{ fzf_install_dir }}/bin
-zsh_default_env: |
   export SHELL="{{ nvim_shell }}"
   export GIT_SSH="{{ git_ssh }}"
   export VISUAL="{{ nvim_exe }}"
   export EDITOR="{{ nvim_exe }}"
+zsh_extra_env: ""
 zsh_default_plugins: |
   #eval "$({{ atuin_exe }} init zsh)"
   eval "$({{ direnv_exe }} hook zsh)"

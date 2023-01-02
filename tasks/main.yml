@@ -1,10 +1,12 @@
 ---
 - name: Nix | Install Nix Home-Manager | task
+  when: ansible_distribution != 'MacOSX'
   import_tasks: tasks/install_home_manager.yml
   tags:
     - home-manager
 
 - name: Nix | Install Node Tools | task
+  when: ansible_distribution != 'MacOSX'
   import_tasks: tasks/install_node_tools.yml
   tags:
     - node-tools
@@ -20,6 +22,7 @@
     - fzf
 
 - name: Nix | Install Python Tools | task
+  when: ansible_distribution != 'MacOSX'
   import_tasks: tasks/install_python_tools.yml
   tags:
     - python-tools
@@ -85,11 +88,13 @@
     - zellij
 
 - name: Install Ranger-Zoxide Plugin
+  when: ansible_distribution != 'MacOSX'
   import_tasks: tasks/install_ranger_zoxide.yml
   tags:
     - ranger
 
 - name: Install Lazygit
+  when: ansible_distribution != 'MacOSX'
   import_tasks: tasks/install_lazygit.yml
   tags:
     - git
@@ -115,17 +120,20 @@
     - direnv
 
 - name: Install Joplin Config
+  when: ansible_distribution != 'MacOSX'
   import_tasks: tasks/install_joplin.yml
   tags:
     - joplin
 
 - name: Boost | Install CppTools | task
+  when: ansible_distribution != 'MacOSX'
   import_tasks: install_cpp_tools.yml
   tags:
     - cpp
   when: "'cpp' in install_languages"
 
 - name: VSCode CppTools | Install VSCode CppTools | task
+  when: ansible_distribution != 'MacOSX'
   import_tasks: install_vscode_cpptools.yml
   tags:
     - cpp
