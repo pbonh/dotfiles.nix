@@ -1,7 +1,10 @@
 ---
+rustup_arch: x86_64
+rustup_os: linux-musl
 rustup_url: https://static.rust-lang.org/rustup/rustup-init.sh
 rustup_script_path: "{{ ansible_env.HOME }}/rustup-init.sh"
 rustup_toolchain: "stable"
+rustup_path: "{{ ansible_env.HOME }}/.rustup/toolchains/{{ rustup_toolchain }}-{{ rustup_arch }}-{{ rustup_os }}/bin"
 cargo_path: "{{ ansible_env.HOME }}/.cargo/bin"
 cargo_bin: "{{ cargo_path }}/cargo"
 cargo_binstall_exe: "{{ cargo_path }}/cargo-binstall"
@@ -148,3 +151,4 @@ xplr_exe: "{{ cargo_binstall_packages['xplr']['path'] }}"
 zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"
 zoxide_exe: "{{ cargo_binstall_packages['zoxide']['path'] }}"
 rust_dev_packages: {}
+rust_dev_packages_rustup: {}

@@ -31,10 +31,8 @@
     creates: "{{ item.value.path }}"
   loop: "{{ rust_dev_packages | dict2items }}"
 
-- name: Rust | Install Tools for Rust Development(MacOS) | shell
-  when: ansible_distribution == 'MacOSX'
-  shell: "{{ item }}"
-  loop:
-    - "rustup component add rust-src"
-    - "rustup component add clippy"
-    - "rustup component add rust-analyzer"
+- name: Rust | Install Tools for Rust Development | shell
+  shell: "rustup component add {{ item.value.name }}"
+  args:
+    creates: "{{ item.value.path }}"
+  loop: "{{ rustup_dev_packages | dict2items }}"
