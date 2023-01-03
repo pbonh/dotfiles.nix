@@ -608,6 +608,18 @@ nvim_default_plugins:
       - "{ 'g*', { n = 'g*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, 'HLSLens: Search Nearest Cursorword', },"
       - "{ 'g#', { n = 'g#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description =  'HLSLens: Search Nearest Cursorword In Reverse', },"
       - "{ '<C-]>', { n = ':noh<CR>', }, description = 'HLSLens: Clear Search Result', },"
+  git:
+    packer:
+      - "use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }"
+    config:
+      - "require('diffview').setup()"
+    keymaps:
+      - "{ '<leader>gb', { n = '<cmd>lua require('telescope.builtin').git_branches()<CR>', }, description = 'Git: Pick Branch',"
+      - "{ '<leader>gl', { n = '<cmd>lua require('telescope.builtin').git_commits()<CR>', }, description = 'Git: Pick Commits',"
+      - "{ '<leader>gc', { n = '<cmd>lua require('telescope.builtin').git_bcommits()<CR>', }, description = 'Git: Pick Buffer Commits',"
+      - "{ '<leader>gs', { n = '<cmd>lua require('telescope.builtin').git_stash()<CR>', }, description = 'Git: Show Stash',"
+      - "{ '<leader>gd', { n = '<cmd>DiffviewOpen<CR>', }, description = 'Git: Show Diff',"
+      - "{ '<leader>gh', { n = '<cmd>DiffviewFileHistory<CR>', }, description = 'Git: Show Diff',"
   terminal:
     packer:
       - "use { 'akinsho/toggleterm.nvim',"
