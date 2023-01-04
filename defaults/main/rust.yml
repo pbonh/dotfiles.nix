@@ -55,6 +55,7 @@ extra_nvim_config_rust:
   - "local liblldb_path = extension_path .. '{{ codelldb_liblldb_path }}'"
   - "local opts = {"
   - "  tools = {"
+  - "    executor = require('rust-tools.executors').toggleterm,"
   - "    hover_actions = {"
   - "      auto_focus = true,"
   - "    },"
