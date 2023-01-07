@@ -571,6 +571,11 @@ nvim_default_plugins:
       - "    'nvim-lua/plenary.nvim',"
       - "  },"
       - "}"
+      - "use { 'stevearc/oil.nvim',"
+      - "  requires = {"
+      - "    'kyazdani42/nvim-web-devicons',"
+      - "  },"
+      - "}"
     config:
       - "require('modicator').setup()"
       - "require('lualine').setup({"
@@ -600,6 +605,7 @@ nvim_default_plugins:
       - "require('gitsigns').setup()"
       - "require('hlslens').setup()"
       - "require('startup').setup()"
+      - "require('oil').setup()"
     keymaps:
       - "{ 'n', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'n\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Next Search Result', },"
       - "{ 'N', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'N\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Previous Search Result', },"
@@ -608,6 +614,7 @@ nvim_default_plugins:
       - "{ 'g*', { n = 'g*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, 'HLSLens: Search Nearest Cursorword', },"
       - "{ 'g#', { n = 'g#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description =  'HLSLens: Search Nearest Cursorword In Reverse', },"
       - "{ '<C-]>', { n = ':noh<CR>', }, description = 'HLSLens: Clear Search Result', },"
+      - "{ '-', { n = ':Oil --float<CR>', }, description = 'Oil: Open Parent Directory', },"
   git:
     packer:
       - "use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }"
@@ -744,11 +751,13 @@ nvim_default_plugins:
       - "    'ThePrimeagen/harpoon', -- Optional: provides the 'harpoon' query item"
       - "  },"
       - "}"
+      - "use { 'kylechui/nvim-surround' }"
     config:
       - "require('leap').set_default_keymaps(true)"
       - "require('leap-spooky').setup()"
       - "require('flit').setup()"
       - "require('portal').setup()"
+      - "require('nvim-surround').setup()"
     keymaps:
       - ""
       - "{ '<C-o>', { n = '<cmd>lua require(\\'portal\\').jump_backward()<CR>', }, description = 'Portal: Jump Backward', },"
