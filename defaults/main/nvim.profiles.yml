@@ -646,7 +646,10 @@ nvim_default_plugins:
       - "    'kyazdani42/nvim-web-devicons',"
       - "  },"
       - "}"
+      - "use { 'chentoast/marks.nvim' }"
+      - "use { 'rcarriga/nvim-notify' }"
     config:
+      - "require('marks').setup()"
       - "require('modicator').setup()"
       - "require('lualine').setup({"
       - "  options = { theme  = gruvbox },"
@@ -848,6 +851,7 @@ nvim_default_plugins:
       - "  requires = {"
       - "    'neovim/nvim-lspconfig',"
       - "    'glepnir/lspsaga.nvim',"
+      - "    'dnlhc/glance.nvim',"
       - "    'onsails/lspkind.nvim',"
       - "    'jose-elias-alvarez/null-ls.nvim',"
       - "    'L3MON4D3/LuaSnip',"
@@ -858,6 +862,7 @@ nvim_default_plugins:
       - "  },"
       - "}"
     config:
+      - "require('glance').setup()"
       - "local null_ls = require('null-ls')"
       - "null_ls.setup({"
       - "    sources = {"
