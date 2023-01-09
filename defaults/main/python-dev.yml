@@ -17,6 +17,14 @@ python_tools_nix:
 debugpy_version: "debugpy"
 debugpy_python_exe_relative: debugpy/bin/python
 debugpy_python_exe: "{{ python_dev_virtualenv_home }}/{{ debugpy_python_exe_relative }}"
+pls_version: "python-lsp-server[all]"
+pls_bin_path_relative: "python-lsp-server/bin"
+pls_python_exe_relative: "{{ pls_bin_path_relative }}/python"
+pls_exe_relative: "{{ pls_bin_path_relative }}/pylsp"
+pls_python_exe: "{{ python_dev_virtualenv_home }}/{{ pls_python_exe_relative }}"
+pls_exe: "{{ python_dev_virtualenv_home }}/{{ pls_exe_relative }}"
+lsp_providers_cpp:
+  - pylsp
 treesitter_parsers_python:
   - python
 python_file_extensions:
@@ -24,6 +32,9 @@ python_file_extensions:
 extra_nvim_plugins_python:
   - "use 'mfussenegger/nvim-dap-python'"
 extra_nvim_config_python:
+  - "require('lspconfig').pylsp.setup({"
+  - "  cmd = { '{{ pls_exe }}' }"
+  - "})"
   - "require('dap-python').setup('{{ debugpy_python_exe }}')"
 extra_nvim_keymap_python:
-  - "vim.api.nvim_set_keymap('n', '<leader>cd', '<cmd>lua require('dap-python').debug_selection()<CR>', { noremap = true, silent = true })"
+  - "vim.api.nvim_set_keymap('n', '<leader>cd', '<cmd>lua require(\\'dap-python\\').debug_selection()<CR>', { noremap = true, silent = true })"
