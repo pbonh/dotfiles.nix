@@ -11,7 +11,7 @@
   tags:
     - node-tools
 
-- name: Nix | Install Rust Tools | task
+- name: Musl | Install Rust Tools | task
   import_tasks: tasks/install_rust_tools.yml
   tags:
     - rust-tools
@@ -136,6 +136,11 @@
   import_tasks: install_vscode_cpptools.yml
   tags:
     - cpp
+
+- name: Musl | Install Python Development Tools | task
+  import_tasks: tasks/install_python_dev.yml
+  tags:
+    - python-dev
 
 #- name: GCCDiag | Install GCCDiag | task
 #  import_tasks: install_gccdiag.yml
