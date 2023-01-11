@@ -489,7 +489,7 @@ nvim_default_plugins:
       - "use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'nvim-treesitter/nvim-treesitter-context', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'nvim-treesitter/nvim-treesitter-refactor', requires = { 'nvim-treesitter/nvim-treesitter' } }"
-      - "use { 'p00f/nvim-ts-rainbow', requires = { 'nvim-treesitter/nvim-treesitter' } }"
+      - "use { 'mrjones2014/nvim-ts-rainbow', requires = { 'nvim-treesitter/nvim-treesitter' } }"
       - "use { 'IndianBoy42/tree-sitter-just' }"
       - "use 'David-Kunz/markid'"
     config:
@@ -532,7 +532,7 @@ nvim_default_plugins:
       - "  rainbow = {"
       - "    enable = true,"
       - "    -- disable = { 'jsx', 'cpp' }, list of languages you want to disable the plugin for"
-      - "    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean"
+      - "    extended_mode = false, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean"
       - "    max_file_lines = nil, -- Do not enable for files with more than n lines, int"
       - "    -- colors = {}, -- table of hex strings"
       - "    -- termcolors = {} -- table of colour name strings"
