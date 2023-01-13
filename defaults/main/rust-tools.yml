@@ -25,8 +25,8 @@ cargo_binstall_packages:
   broot:
     name: broot
     path: "{{ cargo_path }}/broot"
-  btm:
-    name: btm
+  bottom:
+    name: bottom
     path: "{{ cargo_path }}/btm"
   choose:
     name: choose
@@ -126,7 +126,7 @@ cargo_binstall_args: ""
 atuin_exe: "{{ cargo_binstall_packages['atuin']['path'] }}"
 bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
 broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
-btm_exe: "{{ cargo_binstall_packages['btm']['path'] }}"
+bottom_exe: "{{ cargo_binstall_packages['bottom']['path'] }}"
 choose_exe: "{{ cargo_binstall_packages['choose']['path'] }}"
 counts_exe: "{{ cargo_binstall_packages['counts']['path'] }}"
 delta_exe: "{{ cargo_binstall_packages['git-delta']['path'] }}"
