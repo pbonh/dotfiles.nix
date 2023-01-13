@@ -21,13 +21,13 @@
   loop: "{{ cargo_packages | dict2items }}"
 
 - name: Install Cargo/Rust Dev Tools
-  shell: "{{ rustc_env_variables }} {{ cargo_binstall_exe }} --no-confirm {{ item.value.name }}"
+  shell: "{{ rustc_env_variables }} {{ cargo_binstall_exe }} {{ cargo_binstall_args }} --no-confirm {{ item.value.name }}"
   args:
     creates: "{{ item.value.path }}"
   loop: "{{ cargo_binstall_packages | dict2items }}"
 
 - name: Install Cargo/Rust Tools for Rust Development
-  shell: "{{ rustc_env_variables }} {{ cargo_binstall_exe }} --no-confirm {{ item.value.name }}"
+  shell: "{{ rustc_env_variables }} {{ cargo_binstall_exe }} {{ cargo_binstall_args }} --no-confirm {{ item.value.name }}"
   args:
     creates: "{{ item.value.path }}"
   loop: "{{ rust_dev_packages | dict2items }}"

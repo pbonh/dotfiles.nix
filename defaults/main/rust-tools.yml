@@ -122,6 +122,7 @@ cargo_binstall_packages:
     name: zoxide
     path: "{{ cargo_path }}/zoxide"
 rustc_env_variables: ""
+cargo_binstall_args: ""
 atuin_exe: "{{ cargo_binstall_packages['atuin']['path'] }}"
 bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
 broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"
@@ -159,3 +160,4 @@ zellij_exe: "{{ cargo_binstall_packages['zellij']['path'] }}"
 zoxide_exe: "{{ cargo_binstall_packages['zoxide']['path'] }}"
 rust_dev_packages: {}
 rust_dev_packages_rustup: {}
+rustup_dev_packages: {}
