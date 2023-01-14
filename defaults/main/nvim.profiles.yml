@@ -508,6 +508,7 @@ nvim_default_plugins:
       - "    },"
       - "}"
       - "{{ treesitter_parsers_custom_file or '-- No Custom Treesitter Parsers Installed' }}"
+      - "require('nvim-treesitter.install').compilers = { '{{ gcc_exe }}', }"
       - "require('nvim-treesitter.configs').setup({"
       - "  ensure_installed = { "
       - "    'bash',"
