@@ -2,13 +2,15 @@
 rustup_arch: x86_64
 rustup_os: linux-musl
 rustup_url: https://static.rust-lang.org/rustup/rustup-init.sh
-rustup_script_path: "{{ ansible_env.HOME }}/rustup-init.sh"
+rustup_script_path: "{{ dotfiles_user_home }}/rustup-init.sh"
 rustup_toolchain: "stable"
 rustup_musl_target: "x86_64-unknown-linux-musl"
-rustup_path: "{{ ansible_env.HOME }}/.rustup/toolchains/{{ rustup_toolchain }}-{{ rustup_arch }}-{{ rustup_os }}/bin"
-cargo_path: "{{ ansible_env.HOME }}/.cargo/bin"
+rustup_path: "{{ dotfiles_user_home }}/.rustup/toolchains/{{ rustup_toolchain }}-{{ rustup_arch }}-{{ rustup_os }}/bin"
+cargo_path: "{{ dotfiles_user_home }}/.cargo/bin"
 cargo_bin: "{{ cargo_path }}/cargo"
 cargo_binstall_exe: "{{ cargo_path }}/cargo-binstall"
+rustc_env_variables: ""
+cargo_binstall_args: ""
 cargo_packages:
   binstall:
     name: cargo-binstall
@@ -122,8 +124,6 @@ cargo_binstall_packages:
   zoxide:
     name: zoxide
     path: "{{ cargo_path }}/zoxide"
-rustc_env_variables: ""
-cargo_binstall_args: ""
 atuin_exe: "{{ cargo_binstall_packages['atuin']['path'] }}"
 bat_exe: "{{ cargo_binstall_packages['bat']['path'] }}"
 broot_exe: "{{ cargo_binstall_packages['broot']['path'] }}"

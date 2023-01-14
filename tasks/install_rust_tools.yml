@@ -7,7 +7,7 @@
 
 - name: Execute the Rustup Installer(Stable)
   changed_when: false
-  shell: "{{ rustup_script_path }} -y --default-toolchain {{ rustup_toolchain }}"
+  shell: "{{ rustup_script_path }} -y --no-modify-path --default-toolchain {{ rustup_toolchain }}"
 
 - name: Remove the Rustup Installer
   file:
