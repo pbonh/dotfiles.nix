@@ -1,0 +1,77 @@
+---
+nvim_ui_default:
+  packer: |
+    use { 'kdheepak/tabline.nvim',
+      requires = {
+        'nvim-lualine/lualine.nvim',
+        'kyazdani42/nvim-web-devicons',
+        'b0o/incline.nvim',
+      },
+    }
+    use { 'melkster/modicator.nvim' }
+    use { 'petertriho/nvim-scrollbar',
+      requires = {
+        'kevinhwang91/nvim-hlslens',
+        'lewis6991/gitsigns.nvim',
+      },
+    }
+    use { 'startup-nvim/startup.nvim',
+      requires = {
+        'nvim-telescope/telescope.nvim',
+        'nvim-lua/plenary.nvim',
+      },
+    }
+    use { 'stevearc/oil.nvim',
+      requires = {
+        'kyazdani42/nvim-web-devicons',
+      },
+    }
+    use { 'chentoast/marks.nvim' }
+    use { 'rcarriga/nvim-notify' }
+    use { 'nvim-tree/nvim-tree.lua',
+      requires = {
+        'nvim-tree/nvim-web-devicons',
+      },
+    }
+  config: |
+    require('marks').setup()
+    require('modicator').setup()
+    require('nvim-tree').setup()
+    require('lualine').setup({
+      options = { theme  = gruvbox },
+      options = {
+        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
+        globalstatus = true,
+        disabled_filetypes = {
+            'packer', 'NVimTree'
+        }
+      },
+    })
+    require'tabline'.setup({
+      enable = true,
+      options = {
+        max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+        show_tabs_always = true, -- this shows tabs only when there are more than one tab or if the first tab is named
+        show_devicons = true, -- this shows devicons in buffer section
+        show_bufnr = false, -- this appends [bufnr] to buffer section,
+        show_filename_only = false, -- shows base filename only instead of relative path in filename
+        modified_icon = '+ ', -- change the default modified icon
+      }
+    })
+    require('incline').setup()
+    require('scrollbar').setup()
+    require('gitsigns').setup()
+    require('hlslens').setup()
+    require('startup').setup()
+    require('oil').setup()
+  keymaps: |
+    { 'n', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'n\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Next Search Result', },
+    { 'N', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'N\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Previous Search Result', },
+    { '*', { n = '*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Search Cursorword', },
+    { '#', { n = '#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Search Cursorword In Reverse', },
+    { 'g*', { n = 'g*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, 'HLSLens: Search Nearest Cursorword', },
+    { 'g#', { n = 'g#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description =  'HLSLens: Search Nearest Cursorword In Reverse', },
+    { '<C-]>', { n = ':noh<CR>', }, description = 'HLSLens: Clear Search Result', },
+    { '-', { n = ':Oil --float<CR>', }, description = 'Oil: Open Parent Directory', },
+    { '<leader>s', { n = '<cmd>NvimTreeToggle %:p:~:.:h<CR>', }, description = 'Nvim-Tree: Toggle Tree on Current File', },
