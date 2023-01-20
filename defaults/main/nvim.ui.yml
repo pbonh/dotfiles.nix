@@ -66,12 +66,12 @@ nvim_ui_default:
     require('startup').setup()
     require('oil').setup()
   keymaps: |
-    { 'n', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'n\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Next Search Result', },
-    { 'N', { n = '<Cmd>execute(\\'normal! \\' . v:count1 . \\'N\\')<CR><Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Previous Search Result', },
-    { '*', { n = '*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Search Cursorword', },
-    { '#', { n = '#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description = 'HLSLens: Search Cursorword In Reverse', },
-    { 'g*', { n = 'g*<Cmd>lua require(\\'hlslens\\').start()<CR>', }, 'HLSLens: Search Nearest Cursorword', },
-    { 'g#', { n = 'g#<Cmd>lua require(\\'hlslens\\').start()<CR>', }, description =  'HLSLens: Search Nearest Cursorword In Reverse', },
+    { 'n', { n = '<Cmd>execute(\'normal! \' . v:count1 . \'n\')<CR><Cmd>lua require(\'hlslens\').start()<CR>', }, description = 'HLSLens: Next Search Result', },
+    { 'N', { n = '<Cmd>execute(\'normal! \' . v:count1 . \'N\')<CR><Cmd>lua require(\'hlslens\').start()<CR>', }, description = 'HLSLens: Previous Search Result', },
+    { '*', { n = '*<Cmd>lua require(\'hlslens\').start()<CR>', }, description = 'HLSLens: Search Cursorword', },
+    { '#', { n = '#<Cmd>lua require(\'hlslens\').start()<CR>', }, description = 'HLSLens: Search Cursorword In Reverse', },
+    { 'g*', { n = 'g*<Cmd>lua require(\'hlslens\').start()<CR>', }, 'HLSLens: Search Nearest Cursorword', },
+    { 'g#', { n = 'g#<Cmd>lua require(\'hlslens\').start()<CR>', }, description =  'HLSLens: Search Nearest Cursorword In Reverse', },
     { '<C-]>', { n = ':noh<CR>', }, description = 'HLSLens: Clear Search Result', },
     { '-', { n = ':Oil --float<CR>', }, description = 'Oil: Open Parent Directory', },
     { '<leader>s', { n = '<cmd>NvimTreeToggle %:p:~:.:h<CR>', }, description = 'Nvim-Tree: Toggle Tree on Current File', },

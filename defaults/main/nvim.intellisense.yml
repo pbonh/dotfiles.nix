@@ -189,5 +189,5 @@ nvim_intellisense_default:
     { 'K', { n = '<cmd>Lspsaga hover_doc<CR>', }, description = 'LSPSaga: Hover Docs', },
     { '[e', { n = '<cmd>Lspsaga diagnostic_jump_prev<CR>', }, description = 'LSPSaga: Previous Diagnostic', },
     { 'e]', { n = '<cmd>Lspsaga diagnostic_jump_next<CR>', }, description = 'LSPSaga: Next Diagnostic', },
-    { '[E', { n = 'function() require(\\'lspsaga.diagnostic\\').goto_prev({ severity = vim.diagnostic.severity.ERROR }) end', }, description = 'LSPSaga: Previous Error', },
-    { 'E]', { n = 'function() require(\\'lspsaga.diagnostic\\').goto_next({ severity = vim.diagnostic.severity.ERROR }) end', }, description = 'LSPSaga: Next Error', },
+    { '[E', { n = 'function() require(\'lspsaga.diagnostic\').goto_prev({ severity = vim.diagnostic.severity.ERROR }) end', }, description = 'LSPSaga: Previous Error', },
+    { 'E]', { n = 'function() require(\'lspsaga.diagnostic\').goto_next({ severity = vim.diagnostic.severity.ERROR }) end', }, description = 'LSPSaga: Next Error', },
