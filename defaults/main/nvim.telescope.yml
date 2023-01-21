@@ -15,6 +15,7 @@ nvim_telescope_default:
     use { 'nvim-telescope/telescope-ui-select.nvim' }
     use { 'princejoogie/dir-telescope.nvim' }
   config: |
+    require('dressing').setup()
     require('telescope').setup({
       defaults = {
         theme = 'dropdown',
@@ -49,7 +50,6 @@ nvim_telescope_default:
         --   require('telescope.themes').get_dropdown {
         --     -- even more opts
         --   }
-    
         --   -- pseudo code / specification for writing custom displays, like the one
         --   -- for 'codeactions'
         --   -- specific_opts = {

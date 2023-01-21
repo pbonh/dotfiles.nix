@@ -14,6 +14,7 @@ nvim_legendary_default:
         v = { '<C-w>', '<C-g>' },
       },
     })
+    require('legendary').setup({ which_key = { auto_register = true } })
   keymaps: |
     { '<CR>', {
         n = ':',
@@ -21,7 +22,7 @@ nvim_legendary_default:
       description = 'Enter Ex Commands',
     },
     { ':', {
-        n = ':Legendary commands<CR>',
+        n = ':Legendary<CR>',
       },
       description = 'List Legendary Commands',
     },
