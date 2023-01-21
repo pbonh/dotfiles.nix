@@ -22,6 +22,11 @@ nvim_legendary_default:
       description = 'Enter Ex Commands',
     },
     { ':', {
+        n = ',',
+      },
+      description = 'Remap Repeat',
+    },
+    { '<leader>l', {
         n = ':Legendary<CR>',
       },
       description = 'List Legendary Commands',
