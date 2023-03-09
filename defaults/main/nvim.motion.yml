@@ -21,5 +21,5 @@ nvim_motion_default:
     require('portal').setup()
     require('nvim-surround').setup()
   keymaps: |
-    { '<C-o>', { n = '<cmd>lua require(\'portal\').jump_backward()<CR>', }, description = 'Portal: Jump Backward', },
-    { '<C-i>', { n = '<cmd>lua require(\'portal\').jump_forward()<CR>', }, description = 'Portal: Jump Forward', },
+    { '<C-o>', { n = '<cmd>Portal jumplist backward<CR>', }, description = 'Portal: Jump Backward', },
+    { '<C-i>', { n = '<cmd>Portal jumplist forward<CR>', }, description = 'Portal: Jump Forward', },
