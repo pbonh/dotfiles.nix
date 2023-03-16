@@ -1,4 +1,24 @@
 ---
+rustup_dev_packages:
+  rust-src:
+    name: rust-src
+    path: "{{ rustup_path }}/../share/doc/rust"
+  clippy:
+    name: clippy
+    path: "{{ rustup_path }}/cargo-clippy"
+  rust-analyzer:
+    name: rust-analyzer
+    path: "{{ rustup_path }}/rust-analyzer"
+rust_dev_packages:
+  bacon:
+    name: bacon
+    path: "{{ cargo_path }}/bacon"
+  cargo-edit:
+    name: cargo-edit
+    path: "{{ cargo_path }}/cargo-edit"
+  rustfmt:
+    name: rustfmt
+    path: "{{ cargo_path }}/rustfmt"
 treesitter_parsers_rust:
   - rust
 rust_tools_nix:
@@ -86,8 +106,12 @@ extra_nvim_config_rust: |
   function cargo_watch_terminal_runner()
     cargo_watch:toggle()
   end
+  local bacon_watch = Terminal:new({ cmd = '{{ cargo_path }}/bacon', close_on_exit = true, hidden = true })
+  function bacon_watch_terminal_runner()
+    bacon_watch:toggle()
+  end
 extra_nvim_keymap_rust: |
   vim.api.nvim_set_keymap('n', '<leader>ch', '<cmd>lua require(\"rust-tools\").hover_actions.hover_actions()<CR>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua require(\"rust-tools\").code_action_group.code_action_group()<CR>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>cd', '<cmd>RustDebuggables<CR>', { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>cw', '<cmd>lua cargo_watch_terminal_runner()<CR>', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', '<leader>cw', '<cmd>lua bacon_watch_terminal_runner()<CR>', { noremap = true, silent = true })
