@@ -130,13 +130,13 @@ nvim_intellisense_default:
       }
     end
     require('lspsaga').setup({
-      finder = {
-        edit = { 'o', '<CR>' },
-        vsplit = 'v',
-        split = 'x',
-        tabe = 't',
-        quit = { 'q', '<ESC>' },
-      },
+      -- finder = {
+      --   edit = { 'o', '<CR>' },
+      --   vsplit = 'v',
+      --   split = 'x',
+      --   tabe = 't',
+      --   quit = { 'q', '<ESC>' },
+      -- },
       finder = {
         max_height = 0.5,
         min_width = 30,
