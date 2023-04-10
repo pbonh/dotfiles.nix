@@ -22,12 +22,6 @@ rust_dev_packages:
 treesitter_parsers_rust:
   - rust
 rust_tools_nix:
-  - rustc
-  - cargo
-  - cargo-edit
-  - rust-analyzer
-  - rustfmt
-  - clippy
   - vscode-extensions.vadimcn.vscode-lldb
 rust_file_extensions:
   - rust
