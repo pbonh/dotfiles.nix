@@ -32,3 +32,39 @@ nvim_debugger_default:
     { '<F10>', { n = '<cmd>lua require(\'dap\').step_over()<CR>', }, description = 'DAP: Step Over', },
     { '<F11>', { n = '<cmd>lua require(\'dap\').step_into()<CR>', }, description = 'DAP: Step Into', },
     { '<F12>', { n = '<cmd>lua require(\'dap\').step_out()<CR>', }, description = 'DAP: Step Out', },
+nvim_debugger_nondap:
+  packer: |
+    use 'sakhnik/nvim-gdb'
+  config: |
+    vim.cmd([[ let g:nvimgdb_use_find_executables=0 ]])
+
+    local telescope = require('telescope')
+    local actions = require('telescope.actions')
+    local function gdb_with_directory()
+      require('telescope.builtin').find_files {
+        prompt_title = "< GDB Directory Picker >",
+        cwd = "./", -- You can customize this path
+        hidden = false, -- Change to true if you want to see hidden directories
+
+        attach_mappings = function(prompt_bufnr, map)
+          map('i', '<CR>', function()
+            local selection = actions.get_selected_entry()
+            actions.close(prompt_bufnr)
+
+            local dir_name = selection.value
+            local cmd = "{{ gdb_bin }} -q --args program_exe " .. dir_name
+            -- print("Running command: " .. cmd)
+            -- vim.fn.system(cmd)
+            vim.cmd('GdbStart ' .. cmd)
+          end)
+
+          return true
+        end
+      }
+    end
+
+    -- Bind the function to a key
+    vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua gdb_with_directory()<cr>]], { noremap = true, silent = true })
+  keymaps: |
+    { '<leader>dd', { n = '<cmd>GdbStart {{ gdb_bin }} -q --args ./a.out arg1 arg2<CR>', }, description = 'Neovim-GDB: Start Debugger', },
+    { '<leader>dt', { n = '<cmd>lua gdb_with_directory()<CR>', }, description = 'Neovim-GDB: Start Debugger in Directory', },
