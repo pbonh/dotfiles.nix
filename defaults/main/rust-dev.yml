@@ -49,6 +49,13 @@ extra_nvim_plugins_rust: |
       'mfussenegger/nvim-dap',
     }
   }
+extra_nvim_plugins_rust_lazy: |
+  { 'simrat39/rust-tools.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'mfussenegger/nvim-dap',
+    }
+  },
 extra_nvim_config_rust: |
   dap.adapters.rustdbg = {
     id = 'rustdbg',

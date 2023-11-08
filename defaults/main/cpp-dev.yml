@@ -188,6 +188,20 @@ extra_nvim_plugins_cpp: |
       'nvim-treesitter/nvim-treesitter'
     }
   }
+extra_nvim_plugins_cpp_lazy: |
+  { 'p00f/clangd_extensions.nvim' },
+  { 'Shatur/neovim-cmake',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'mfussenegger/nvim-dap',
+      'stevearc/dressing.nvim'
+    }
+  },
+  { 'Badhi/nvim-treesitter-cpp-tools',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
+    }
+  },
 extra_nvim_config_cpp: |
   require('clangd_extensions').setup()
   local configs = require('lspconfig.configs')

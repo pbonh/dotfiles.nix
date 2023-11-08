@@ -175,9 +175,6 @@ nvim_lua_packer_config: |
       {% for plugin in nvim_default_plugins -%}
       {{ nvim_default_plugins[plugin]['keymaps'] | indent(4) }}
       {% endfor %}
-      {% for plugin in nvim_extra_plugins -%}
-      {{ nvim_extra_plugins[plugin]['keymaps'] | indent(4) }}
-      {% endfor %}
     },
   })
 
@@ -220,6 +217,12 @@ nvim_lua_lazy_config: |
     {{ nvim_colorscheme_default['lazy'] | indent(2) }}
     {{ nvim_intellisense_default['lazy'] | indent(2) }}
     {{ nvim_debugger_default['lazy'] | indent(2) }}
+
+    -- Neovim Plugins(Extra)
+    {% for language in nvim_extra_plugins -%}
+    {{ nvim_extra_plugins[language]['lazy'] | indent(2) }}
+    {% endfor %}
+
   })
 
   -- Neovim Plugin Settings
@@ -233,6 +236,11 @@ nvim_lua_lazy_config: |
   {{ nvim_colorscheme_default['config'] }}
   {{ nvim_intellisense_default['config'] }}
   {{ nvim_debugger_default['config'] }}
+
+  -- Neovim Plugin Settings(Extra)
+  {% for language in nvim_extra_plugins -%}
+  {{ nvim_extra_plugins[language]['config'] }}
+  {% endfor %}
 
   -- Legendary Keymap Setup
   require('legendary').setup({
