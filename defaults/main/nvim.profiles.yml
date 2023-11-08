@@ -175,6 +175,9 @@ nvim_lua_packer_config: |
       {% for plugin in nvim_default_plugins -%}
       {{ nvim_default_plugins[plugin]['keymaps'] | indent(4) }}
       {% endfor %}
+      {% for plugin in nvim_extra_plugins -%}
+      {{ nvim_extra_plugins[plugin]['keymaps'] | indent(4) }}
+      {% endfor %}
     },
   })
 
@@ -263,6 +266,9 @@ nvim_lua_lazy_config: |
       {{ nvim_colorscheme_default['keymaps'] | indent(4) }}
       {{ nvim_intellisense_default['keymaps'] | indent(4) }}
       {{ nvim_debugger_default['keymaps'] | indent(4) }}
+      {% for plugin in nvim_extra_plugins -%}
+      {{ nvim_extra_plugins[plugin]['keymaps'] | indent(4) }}
+      {% endfor %}
     },
   })
 
