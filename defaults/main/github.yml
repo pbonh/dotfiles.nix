@@ -8,7 +8,6 @@ extra_nvim_plugins_github_lazy: |
   },
 extra_nvim_config_github: ""
 extra_nvim_keymap_github: |
-  vim.api.nvim_set_keymap('n', '', '', { noremap = true, silent = true })
   { '<leader>co', {
       n = '<cmd>Copilot enable<CR>',
     },
