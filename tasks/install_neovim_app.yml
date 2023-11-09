@@ -6,6 +6,13 @@
     dest: "{{ nvim_appimage_exe }}"
     mode: 0755
 
+- name: Neovim | Symlink Neovim Appimage | get_url
+  when: ansible_distribution != 'MacOSX'
+  ansible.builtin.file:
+    src: "{{ nvim_appimage_exe }}"
+    dest: "{{ nvim_exe_default }}"
+    state: link
+
 - name: Neovim | Setup Neovim Download Directory | file
   when: ansible_distribution == 'MacOSX'
   file:
