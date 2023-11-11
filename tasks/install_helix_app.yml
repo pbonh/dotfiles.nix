@@ -32,3 +32,22 @@
     src: "{{ helix_macos_install_download_dir }}/{{ helix_macos_exe }}"
     path: "{{ helix_exe_default }}"
     state: link
+
+- name: Helix | Download Helix Appimage | get_url
+  when:
+  - ansible_distribution != 'MacOSX'
+  - helix_appimage_install_option == true
+  get_url:
+    url: "{{ helix_appimage_url }}"
+    dest: "{{ helix_appimage_exe }}"
+    mode: 0755
+
+- name: Helix | Symlink Helix Appimage | get_url
+  when:
+  - ansible_distribution != 'MacOSX'
+  - helix_appimage_install_option == true
+  ansible.builtin.file:
+    src: "{{ helix_appimage_exe }}"
+    dest: "{{ helix_exe_default }}"
+    state: link
+
