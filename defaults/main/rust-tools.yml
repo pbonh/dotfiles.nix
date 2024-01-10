@@ -133,17 +133,10 @@ cargo_binstall_packages:
     path: "{{ cargo_path }}xcp"
   xplr:
     name: xplr
-<<<<<<< HEAD
-    path: "{{ cargo_path }}/xplr"
-  yazi:
-    name: yazi-fm
-    path: "{{ cargo_path }}/yazi"
-=======
     path: "{{ cargo_path }}xplr"
   yazi:
     name: yazi-fm
     path: "{{ cargo_path }}yazi"
->>>>>>> 6bfa2b8e303d4dbc8a83288d4febc2fea5d093d9
   zellij:
     name: zellij
     path: "{{ cargo_path }}zellij"
